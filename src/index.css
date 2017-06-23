@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300i');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato', sans-serif;
+  transform: translateY(-100px);
+  opacity: 0;
+  animation: appear 1s ease-in-out forwards;
+}
+@keyframes appear {
+  0% {
+    opacity: 0;
+    
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}

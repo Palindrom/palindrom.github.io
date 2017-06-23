@@ -1,0 +1,13 @@
+.bodyDiv {
+  background-color: #333;
+  padding: 10px 10px;
+}
+.catchPhrase {
+  text-align: center;
+  padding: 20px;
+}
+.catchPhrase h3 {
+  color: #fff;
+  font-style: italic;
+  margin: 0px;
+}
