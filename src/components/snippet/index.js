@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import logo from '../../assets/logo.png';
 import HighlightJS from 'highlight.js';
 import classNames from 'classnames';
 import AceEditor from 'react-ace';
-import brace from 'brace';
 import 'brace/theme/github';
 import 'brace/mode/json';
 import './style.css';
@@ -37,7 +35,7 @@ palindrom.obj.location = 'North Pole';`
             this.state.currentCodeSnippet + this.state.fullSnippet[index++]
         });
         HighlightJS.highlightBlock(this.jSCodeTag);
-        if (index == this.state.fullSnippet.length) {
+        if (index === this.state.fullSnippet.length) {
           this.setState({ codeDemoDone: true });
           clearInterval(interval);
         }
@@ -75,7 +73,7 @@ palindrom.obj.location = 'North Pole';`
   render() {
     return (
       <div>
-        <div className="highlight">
+        <div className="demo-highlight">
           <pre>
             <code
               ref={tag => {

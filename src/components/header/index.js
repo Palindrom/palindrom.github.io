@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './style.css';
 import logo from '../../assets/logo.png';
 import GHLogo from '../../assets/github-logo.png';
+import Navigation from '../navigation';
 
 class Header extends Component {
   render() {
@@ -11,20 +12,13 @@ class Header extends Component {
           <a
             href="https://github.com/Palindrom/Palindrom"
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
             title="Fork me on GitHub"
           >
             <img src={GHLogo} alt="Fork me on GitHub" />
           </a>
         </div>
-        <nav className="container">
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Issue Tracker</a></li>
-            <li><a href="#">Examples</a></li>
-            <li><a href="#">Related Projects</a></li>
-          </ul>
-        </nav>
+        <Navigation />
         <div className="header">
           <div>
             <img src={logo} alt="Palindrom Logo" />

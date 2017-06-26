@@ -15,62 +15,6 @@
     right: 0;
     padding: 10px;
 }
-nav ul {
-  text-transform: uppercase;
-  font-weight: 700;
-  display: inline-block;
-  padding: 0;
-}
-nav ul li {
-  list-style: none;
-  display: inline;
-}
-nav ul li a {
-  color: #333;
-  text-decoration: none
-}
-nav ul li a:hover {
-  color: red;
-  text-decoration: none
-}
-nav ul li:last-child::after {
-  content: "";
-  margin: 0;
-}
-nav ul li:first-child::before {
-  content: "";
-  margin: 0;
-}
-nav ul li::after {
-    font-size: 1.3em;
-  content: "○";
-  margin-right: -8px;
-  margin-left: 10px;
-  color: red
-}
-nav ul li::before {
-    font-size: 1.3em;
-  content: "○";
-  margin-right: 10px;
-  color: red
-}
-/* bootstrap like container */
-.container {
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-}
-@media (min-width: 768px) {
-  .container {
-    width: 750px;
-  }
-}
-@media (min-width: 992px) {
-  .container {
-    width: 970px;
-  }
-}
 .header {
   height: 300px;
   display: flex;
@@ -88,7 +32,7 @@ nav ul li::before {
   max-width: 900px;
   box-sizing: border-box;
 }
-h1 {
+.header-wrapper h1 {
   font-style: italic;
   font-weight: 300;
   text-align: center;

@@ -18,3 +18,27 @@ body {
     transform: translateY(0px);
   }
 }
+/* bootstrap like container */
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+
+.section-catch-phrase {
+  text-transform: uppercase;
+  font-size: 1.5em;
+  font-weight: 300;
+  font-style: italic;
+}

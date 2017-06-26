@@ -1,4 +1,4 @@
-.highlight {
+.demo-highlight {
   margin: 0px auto;
   width: 600px;
   min-height: 230px;
@@ -13,7 +13,7 @@
     #dddddd 100%
   );
   padding: 5px 30px;
-  border-radius: 5px;
+  box-shadow: 10px 10px 18px -6px rgba(0, 0, 0, 0.75);
   font-size: 1.3em;
   color: #333;
   box-sizing: border-box;
@@ -38,13 +38,11 @@
 .editorWrapper {
   padding: 2px;
   background: #fff;
-  border-radius: 5px;
 }
 .json {
   vertical-align: top;
   background-color: #fff;
   border: 1px solid #999;
-  border-radius: 5px;
   padding: 5px;
   box-sizing: border-box;
   display: inline-block;

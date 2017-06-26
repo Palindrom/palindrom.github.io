@@ -1,0 +1,39 @@
+nav ul {
+  text-transform: uppercase;
+  font-weight: 700;
+  display: inline-block;
+  padding: 0;
+}
+nav ul li {
+  list-style: none;
+  display: inline;
+}
+nav ul li a {
+  color: #333;
+  text-decoration: none
+}
+nav ul li a:hover {
+  color: red;
+  text-decoration: none
+}
+nav ul li:last-child::after {
+  content: "";
+  margin: 0;
+}
+nav ul li:first-child::before {
+  content: "";
+  margin: 0;
+}
+nav ul li::after {
+    font-size: 1.3em;
+  content: "○";
+  margin-right: -8px;
+  margin-left: 10px;
+  color: red
+}
+nav ul li::before {
+    font-size: 1.3em;
+  content: "○";
+  margin-right: 10px;
+  color: red
+}

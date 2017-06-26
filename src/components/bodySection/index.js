@@ -8,10 +8,10 @@ class BodySection extends Component {
     return (
       <div className="bodyDiv">
         <div className="catchPhrase">
-          <h3>
+          <h2 className='section-catch-phrase'>
             Define a connection to a remote PATCH server, get an
             object that is persistent between browser and server!
-          </h3>
+          </h2>
         </div>
         <Snippet />
       </div>
