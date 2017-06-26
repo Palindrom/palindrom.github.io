@@ -1,6 +1,7 @@
 .bodyDiv {
   background-color: #333;
   padding: 10px 10px;
+  padding-bottom: 100px;
 }
 .catchPhrase {
   text-align: center;

@@ -9,8 +9,7 @@ class BodySection extends Component {
       <div className="bodyDiv">
         <div className="catchPhrase">
           <h2 className='section-catch-phrase'>
-            Define a connection to a remote PATCH server, get an
-            object that is persistent between browser and server!
+            DEFINE A CONNECTION TO A REMOTE PATCH SERVER, GET AN OBJECT THAT IS PERSISTENT BETWEEN CLIENT AND SERVER!
           </h2>
         </div>
         <Snippet />

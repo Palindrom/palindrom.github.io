@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import HighlightJS from 'highlight.js';
 import classNames from 'classnames';
-import AceEditor from 'react-ace';
-import 'brace/theme/github';
-import 'brace/mode/json';
 import './style.css';
 
 class Snippet extends Component {
@@ -30,13 +27,12 @@ palindrom.obj.location = 'North Pole';`
     };
   }
   componentDidMount() {
-
     this.isMount = true;
     this.codeDemoTimeout = setTimeout(() => {
-      if(!this.isMount) return;
+      if (!this.isMount) return;
       let index = 0;
       this.codeInterval = setInterval(() => {
-        if(!this.isMount) return;
+        if (!this.isMount) return;
         this.setState({
           currentCodeSnippet:
             this.state.currentCodeSnippet + this.state.fullSnippet[index++]
@@ -108,17 +104,9 @@ palindrom.obj.location = 'North Pole';`
             <h4>Client-side</h4>
             <div className="editorWrapper">
               <span>{'{'}</span>
-              <AceEditor
-                mode="json"
-                theme="github"
-                width="100%"
-                height="70px"
-                showGutter={false}
+              <textarea
                 value={this.state.json1}
-                onChange={this.onJSONOneChange.bind(this)}
-                fontSize="1em"
-                name="json1"
-                editorProps={{ $blockScrolling: true }}
+                onChange={ev => this.onJSONOneChange(ev.target.value)}
               />
               <span>{'}'}</span>
             </div>
@@ -127,17 +115,9 @@ palindrom.obj.location = 'North Pole';`
             <h4>Server-side</h4>
             <div className="editorWrapper">
               <span>{'{'}</span>
-              <AceEditor
-                mode="json"
-                theme="github"
-                width="100%"
-                height="70px"
-                showGutter={false}
+              <textarea
                 value={this.state.json2}
-                onChange={this.onJSONTwoChange.bind(this)}
-                fontSize="1em"
-                name="json2"
-                editorProps={{ $blockScrolling: true }}
+                onChange={ev => this.onJSONTwoChange(ev.target.value)}
               />
               <span>{'}'}</span>
             </div>
