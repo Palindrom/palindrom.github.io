@@ -7,6 +7,9 @@
   background: #efefef;
   border-radius: 2px;
 }
+.dynamic-docs-wrapper {
+  padding-bottom: 100px;
+}
 .docs-loading {
   height: 95vh;
 }
