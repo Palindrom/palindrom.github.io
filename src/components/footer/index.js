@@ -7,8 +7,10 @@ class Footer extends Component {
     return (
       <div className="footer">
         <div className="container">
-          <img src={SCLogo} alt="Starcounter Logo" />
-          <p>Starcounter Opensource</p>
+          <a href="https://www.starcounter.io">
+            <img src={SCLogo} alt="Starcounter Logo" />
+            <p>Starcounter Opensource</p>
+          </a>
         </div>
       </div>
     );
