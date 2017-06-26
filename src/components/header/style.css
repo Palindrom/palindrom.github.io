@@ -6,14 +6,30 @@
     #e8e8e8 100%
   );
 }
-.github-logo:hover {
-    opacity: .6;
+.github-corner:hover .octo-arm {
+  animation: octocat-wave 560ms ease-in-out;
 }
-.github-logo {
-    position: absolute;
-    right: 0;
-    right: 0;
-    padding: 10px;
+.github-corner svg {
+  fill:#e41b1b; color:#fff; position: absolute; top: 0; border: 0; right: 0;
+}
+@keyframes octocat-wave {
+  0%, 100% {
+    transform: rotate(0);
+  }
+  20%, 60% {
+    transform: rotate(-25deg);
+  }
+  40%, 80% {
+    transform: rotate(10deg);
+  }
+}
+@media (max-width: 500px) {
+  .github-corner:hover .octo-arm {
+    animation: none;
+  }
+  .github-corner .octo-arm {
+    animation: octocat-wave 560ms ease-in-out;
+  }
 }
 .header {
   height: 300px;
