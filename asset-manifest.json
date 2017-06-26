@@ -1,9 +1,11 @@
 {
-  "main.css": "static/css/main.cd6ae7bf.css",
-  "main.css.map": "static/css/main.cd6ae7bf.css.map",
-  "main.js": "static/js/main.fdcf18c5.js",
-  "main.js.map": "static/js/main.fdcf18c5.js.map",
+  "main.css": "static/css/main.0aad5b43.css",
+  "main.css.map": "static/css/main.0aad5b43.css.map",
+  "main.js": "static/js/main.e42c16c2.js",
+  "main.js.map": "static/js/main.e42c16c2.js.map",
   "static\\media\\github-logo.png": "static/media/github-logo.2a11ba21.png",
   "static\\media\\logo.png": "static/media/logo.ce422b14.png",
-  "static\\media\\logo.svg": "static/media/logo.5d5d9eef.svg"
+  "static\\media\\polymer.png": "static/media/polymer.84f76d97.png",
+  "static\\media\\react.png": "static/media/react.fe7d34fe.png",
+  "static\\media\\vue.png": "static/media/vue.acd3acb1.png"
 }
