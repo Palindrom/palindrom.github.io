@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './style.css';
 import logo from '../../assets/logo.png';
-import GHLogo from '../../assets/github-logo.png';
 import Navigation from '../navigation';
 
 class Header extends Component {
