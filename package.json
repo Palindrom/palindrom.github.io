@@ -10,7 +10,7 @@
     "react": "^15.6.1",
     "react-ace": "^5.0.1",
     "react-dom": "^15.6.1",
-    "simple-react-router": "0.0.13"
+    "react-router-dom": "^4.1.1"
   },
   "repository": {
     "type": "git",

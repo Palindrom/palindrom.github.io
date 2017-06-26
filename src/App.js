@@ -1,12 +1,16 @@
 import Home from './pages/home';
 import Docs from './pages/docs';
+import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
 
-import SimpleReactRouter from 'simple-react-router';
-
-class App extends SimpleReactRouter {
-  routes(map) {
-    map('/', Home);
-    map('/docs', Docs);
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <Route path="/" exact={true} component={Home} />
+        <Route path="/docs" component={Docs} />
+      </div>
+    );
   }
 }
 

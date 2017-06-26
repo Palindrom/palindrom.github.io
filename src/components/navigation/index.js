@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
+
 import './style.css';
 
 class Navigation extends Component {
@@ -6,8 +8,8 @@ class Navigation extends Component {
     return (
       <nav className="container">
         <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="docs">Readme</a></li>
+          <li><Link to='/'>Home</Link></li>
+          <li><Link to='docs'>Readme</Link></li>
           <li>
             <a href="https://github.com/Palindrom/Palindrom">Issue Tracker</a>
           </li>

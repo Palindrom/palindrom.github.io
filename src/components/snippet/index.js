@@ -8,6 +8,9 @@ import './style.css';
 
 class Snippet extends Component {
   jSCodeTag;
+  codeDemoInterval;
+  codeDemoTimeout;
+  isMount;
   constructor() {
     super();
     const json = `"name": "John Doe",
@@ -27,9 +30,13 @@ palindrom.obj.location = 'North Pole';`
     };
   }
   componentDidMount() {
-    setTimeout(() => {
+
+    this.isMount = true;
+    this.codeDemoTimeout = setTimeout(() => {
+      if(!this.isMount) return;
       let index = 0;
-      let interval = setInterval(() => {
+      this.codeInterval = setInterval(() => {
+        if(!this.isMount) return;
         this.setState({
           currentCodeSnippet:
             this.state.currentCodeSnippet + this.state.fullSnippet[index++]
@@ -37,10 +44,15 @@ palindrom.obj.location = 'North Pole';`
         HighlightJS.highlightBlock(this.jSCodeTag);
         if (index === this.state.fullSnippet.length) {
           this.setState({ codeDemoDone: true });
-          clearInterval(interval);
+          clearInterval(this.codeInterval);
         }
       }, 30);
     }, 1000);
+  }
+  componentWillUnmount() {
+    clearInterval(this.codeDemoInterval);
+    clearTimeout(this.codeDemoTimeout);
+    this.isMount = false;
   }
   onJSONOneChange(value) {
     this.setState({
