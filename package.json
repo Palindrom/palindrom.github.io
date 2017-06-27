@@ -14,9 +14,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/alshakero/palindrom-website.git"
+    "url": "https://github.com/Palindrom/palindrom.github.io.git"
   },
-  "homepage": "https://alshakero.github.io/palindrom-website",
+  "homepage": "https://palindrom.github.io/",
   "devDependencies": {
     "gh-pages": "^1.0.0",
     "react-scripts": "1.0.7"
