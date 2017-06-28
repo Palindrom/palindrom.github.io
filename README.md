@@ -4,7 +4,7 @@ This website is created with React. Minimal React knowledge might be needed in o
 
 ## Why `source` branch is the main branch?
 
-To have a website that is on `org.github.io` and not `org.github.io/websites-repo` you need to have HTML files in `master` branch. To keep the source close to the website itself (HTML files) I created `source` branch that has the React app's source. You can built the app into `master` instead of `gh-pages`, typically.
+To have a website that is on `org.github.io` and not `org.github.io/websites-repo` you need to have HTML files in `master` branch. To keep the source close to the website itself (HTML files) I created `source` branch that has the React app's source. You can build the app into `master` instead of `gh-pages`, typically.
 
 ## Contribution
 
