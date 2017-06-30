@@ -3,16 +3,16 @@ import Navigation from '../components/navigation';
 import Docs from '../components/docs';
 import Footer from '../components/footer';
 
-class Home extends Component {
+class DocsPage extends Component {
   render() {
     return (
       <div className="App">
         <Navigation />
-        <Docs />
+        <Docs match={this.props.match} />
         <Footer />
       </div>
     );
   }
 }
 
-export default Home;
+export default DocsPage;

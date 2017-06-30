@@ -1,5 +1,25 @@
 .readme-wrapper {
   width: 100%;
+  min-height: 82vh
+}
+.docs-header {
+  padding: 1em;
+
+}
+.left h1 {
+  margin: 5px;
+}
+.left {
+  float: left;
+  width: 40%;
+  text-align: left
+}
+.right {
+  float: right;
+  width: 40%
+}
+.clearfix {
+  clear: both
 }
 .version-select-wrapper {
   text-align: right;
@@ -7,7 +27,28 @@
   background: #efefef;
   border-radius: 2px;
 }
-.dynamic-docs-wrapper {
+.nav-and-readme-wrapper {
+  display: grid;
+  grid-template-columns: repeat(14, [col-start] 1fr);
+  grid-gap: 5px;
+}
+.navigation {
+  padding: 0 1em;
+  grid-column: col-start 1 / span 2;
+  border-right: 1px solid #eee;
+}
+.navigation ul {
+  font-size: 1.2em;
+  line-height: 1.8em;
+  list-style:none;
+  padding: 0 1em;
+}
+.navigation h3 {
+  color: #999
+}
+#dynamic-docs-wrapper {
+  padding: 1em;
+  grid-column: col-start 3 / span 2;
   padding-bottom: 100px;
 }
 .docs-loading {
