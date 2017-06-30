@@ -20,7 +20,12 @@ export function fetchAndCacheText(url, expire = 0) {
     });
 
     fetch(url, { headers, mode: 'cors', redirect: 'follow' })
-      .then(res => res.text())
+      .then(function(res) {
+         if(res.state > 400) {
+            throw URIError();
+         } 
+         return res => res.text()
+      })
       .then(text => {
         //cache it
         window.localStorage.setItem(

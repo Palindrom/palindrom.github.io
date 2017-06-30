@@ -20,39 +20,50 @@ class Docs extends Component {
   }
 
   getAllDocsSections(version) {
+    this.setState({ error: false });
     this.setState({ markup: '', docsSections: [] });
 
     fetchAndCacheText(
       'https://api.github.com/repos/palindrom/palindrom/contents/docs?ref=' +
         version
-    ).then(filesAndDirs => {
-      filesAndDirs = JSON.parse(filesAndDirs);
-      if (Array.isArray(filesAndDirs)) {
-        /* sort files by name */
-        filesAndDirs = filesAndDirs.sort((a, b) => {
-          return a.name.localeCompare(b.name);
-        });
-        this.setState({
-          docsSections: filesAndDirs.filter(x => x.type === 'file')
-        });
-        // if section is chosen load it
-        if (this.state.currentSection) {
-          const a = this.state.currentSection;
-          const MDFile = filesAndDirs.find(
-            x => x.name == this.state.currentSection + '.md'
-          );
-          this.setState({ MDUrl: MDFile.url });
+    )
+      .then(filesAndDirs => {
+        filesAndDirs = JSON.parse(filesAndDirs);
+        if (Array.isArray(filesAndDirs)) {
+          /* sort files by name */
+          filesAndDirs = filesAndDirs.sort((a, b) => {
+            return a.name.localeCompare(b.name);
+          });
+          this.setState({
+            docsSections: filesAndDirs.filter(x => x.type === 'file')
+          });
+          let MDSetCorrectly = false;
+          // if section is chosen load it
+          if (this.state.currentSection) {
+            const a = this.state.currentSection;
+            const MDFile = filesAndDirs.find(
+              x => x.name == this.state.currentSection + '.md'
+            );
+            if (MDFile) {
+              // 404
+              MDSetCorrectly = true;
+              this.setState({ MDUrl: MDFile.url });
+            }
+          }
+          if (!MDSetCorrectly) {
+            //load the first MD file
+            this.setState({ MDUrl: filesAndDirs[0].url });
+          }
         } else {
-          //load the first MD file
-          this.setState({ MDUrl: filesAndDirs[0].url });
+          // fail over to README.md
+          this.setState({
+            MDUrl: `https://api.github.com/repos/palindrom/palindrom/contents/README.md?ref=${version}`
+          });
         }
-      } else {
-        // fail over to README.md
-        this.setState({
-          MDUrl: `https://api.github.com/repos/palindrom/palindrom/contents/README.md?ref=${version}`
-        });
-      }
-    });
+      })
+      .catch(error => {
+        this.setState({ error: '404: Not found' });
+      });
   }
 
   fetchDocs() {
@@ -135,7 +146,13 @@ class Docs extends Component {
                     {this.state.docsSections.map((section, key) => {
                       return (
                         <li key={key}>
-                          <Link to={`/docs/${this.state.currentVersion}/${section.name.replace('.md', '')}`}>
+                          <Link
+                            to={`/docs/${this.state
+                              .currentVersion}/${section.name.replace(
+                              '.md',
+                              ''
+                            )}`}
+                          >
                             {section.name.replace('.md', '')}
                           </Link>
                         </li>
@@ -146,7 +163,11 @@ class Docs extends Component {
               : ''}
           </div>
           <div id="dynamic-docs-wrapper" className="container">
-            <MDViewer url={this.state.MDUrl} />
+            {this.state.error
+              ? <h1>
+                  {this.state.error}
+                </h1>
+              : <MDViewer url={this.state.MDUrl} />}
           </div>
         </div>
       </div>
