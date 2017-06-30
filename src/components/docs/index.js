@@ -91,6 +91,8 @@ class Docs extends Component {
       } else {
         this.getAllDocsSections(this.state.currentVersion);
       }
+    }).catch(error => {
+      this.setState('404: Not found');
     });
   }
   componentDidMount() {
