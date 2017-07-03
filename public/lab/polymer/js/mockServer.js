@@ -30,7 +30,6 @@
   stub.andReturn({
     "responseText": "Error"
   });
-
   var _old = XMLHttpRequest.prototype.send;
   XMLHttpRequest.prototype.send = function (data) {
     if (data == null && this.requestHeaders['Accept'] == 'application/json') {
@@ -39,6 +38,8 @@
     else if (this.requestHeaders['Accept'] == 'application/json-patch+json') {
       var inPatches = data ? JSON.parse(data) : [];
       var outPatches = [];
+      console.log('omar')
+      
 
       if (this.url != lastUrl && !inPatches.length) {
         handlePageLoad(this.url);
@@ -47,8 +48,7 @@
         outPatches.push({op: 'replace', path: '/user/lastName$', value: full.user.lastName$});
         outPatches.push({op: 'replace', path: '/user/fullName', value: full.user.fullName});
       }
-
-      jsonpatch.apply(full, inPatches);
+      jsonpatch.applyPatch(full, inPatches);
 
       inPatches.forEach(function (patch) {
         if (patch.op == "replace" &&

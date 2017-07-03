@@ -7,8 +7,11 @@
   <!-- include web components polyfill -->
   <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
 
+  <!-- this is only needed for the fake ajax, not a Palinrom dep -->
+  <script src="https://rawgit.com/Starcounter-Jack/JSON-Patch/master/dist/fast-json-patch.min.js"></script>
+
   <!-- include Palindrom with dependencies -->
-  <script src="../../dist/palindrom-dom.js"></script>
+  <script src="https://rawgit.com/Palindrom/Palindrom/master/dist/palindrom-dom.js"></script>
 
   <!-- include components for demo -->
   <link rel="import" href="bower_components/polymer/polymer.html">
@@ -105,8 +108,12 @@
         document.getElementById('test').model = obj;
       },
       debug: false,
-      listenTo: document.getElementById("listeningScope")
+      listenTo: document.getElementById("listeningScope"),
+      onRemoteChange: function(e) {
+        console.log(e)
+      }
     });
+
   </script>
 
   <palindrom-bunny></palindrom-bunny>

@@ -5,7 +5,12 @@
     <meta charset="utf-8">
     <title>Palindrom + Vue</title>
     <link rel="stylesheet" href="css/style.css">
-    <script src="../../dist/palindrom-dom.js"></script>
+    
+    <!-- this is only needed for the fake ajax, not a Palinrom dep -->
+    <script src="https://rawgit.com/Starcounter-Jack/JSON-Patch/master/dist/fast-json-patch.min.js"></script>
+
+
+    <script src="https://rawgit.com/Palindrom/Palindrom/master/dist/palindrom-dom.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.2/vue.min.js"></script>
     <!-- mock server responses -->
     <script src="../utils/lib/jasmine-2.2.0/jasmine.js"></script>
@@ -21,9 +26,11 @@
 
     <div id="brand">
         <div class="float"><img alt="Palindrom + Vue" title="Palindrom and Vue logos" src="css/logo.png"></div>
-        <div class="float"><h1>Palindrom + Vue</h1></div>
+        <div class="float">
+            <h1>Palindrom + Vue</h1>
+        </div>
         <div style="clear: both"></div>
-     </div>
+    </div>
 
     <h3>This demo shows usage with Vue's two-way binding</h3>
 

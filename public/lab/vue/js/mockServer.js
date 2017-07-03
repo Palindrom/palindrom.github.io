@@ -48,7 +48,7 @@
         outPatches.push({op: 'replace', path: '/user/fullName', value: full.user.fullName});
       }
 
-      jsonpatch.apply(full, inPatches);
+      jsonpatch.applyPatch(full, inPatches);
 
       inPatches.forEach(function (patch) {
         if (patch.op == "replace" &&
