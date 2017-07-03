@@ -82,7 +82,6 @@ class Docs extends Component {
         return b.localeCompare(a);
       });
       tags.push({ name: 'master' });
-      tags.push({ name: 'New-docs-hierarchy' });
       this.setState({ versions: tags });
       const latestVersion = tags[0].name;
 
