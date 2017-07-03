@@ -60,7 +60,7 @@ XMLHttpRequest.prototype.send = function(data) {
       });
     }
 
-    jsonpatch.apply(full, inPatches);
+    jsonpatch.applyPatch(full, inPatches);
 
     inPatches.forEach(function(patch) {
       if (patch.op == "replace" &&

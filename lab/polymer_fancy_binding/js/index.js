@@ -38,7 +38,7 @@ XMLHttpRequest.prototype.send = function (data) {
     } else if (this.requestHeaders["Accept"] == "application/json-patch+json") {
         var inPatches = data ? JSON.parse(data) : [];
         var outPatches = [];
-        jsonpatch.apply(model, inPatches);
+        jsonpatch.applyPatch(model, inPatches);
 
         for (var i = 0; i < inPatches.length; i++) {
             var p = inPatches[i];

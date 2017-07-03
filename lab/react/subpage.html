@@ -5,10 +5,14 @@
     <meta charset="utf-8">
     <title>Palindrom + React</title>
     <link rel="stylesheet" href="css/style.css">
-    <script src="../../dist/palindrom-dom.js"></script>
+    <script src="https://rawgit.com/Palindrom/Palindrom/master/dist/palindrom-dom.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react-dom.js"></script>
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <!-- this is only needed for the fake ajax, not a Palinrom dep -->
+    <script src="https://rawgit.com/Starcounter-Jack/JSON-Patch/master/dist/fast-json-patch.min.js"></script>
+
 
     <!-- mock server responses -->
     <script src="../utils/lib/jasmine-2.2.0/jasmine.js"></script>
@@ -38,7 +42,8 @@
                 Capturing Links
             </h2>
 
-            <p>Clicking one of the links contained in a Polymer Element (or in regular DOM, doesn't matter) actually sends a PATCH </p>
+            <p>Clicking one of the links contained in a Polymer Element (or in regular DOM, doesn't matter) actually sends a
+                PATCH </p>
             <ul>
                 <li>
                     <a href="index.html">Albert <strong>Einstein</strong></a> (index.html)
@@ -55,56 +60,33 @@
         </section>
     </article>
     <script type="text/babel">
-        var palindrom = new PalindromDOM({
-            remoteUrl: window.location.href,
-            onStateReset: function (obj) {
-                class MyComponent extends React.Component {
-                    constructor() {
-                        super();
-                        this.state = { ...palindrom.obj };
-                        palindrom.onRemoteChange = this.remoteUpdateHappened.bind(this);
-                    }
-                    remoteUpdateHappened() {
-                        this.updating = true;
-                        this.setState({...palindrom.obj}, () => this.updating = false);
-                    }
-                    componentDidUpdate() {
-                        if(!this.updating)
-                            Object.assign(palindrom.obj.user, this.state.user);
-                    }
-                    render() {
-                        const section = 
-                        <section>
-                            <h2>
-                                Capturing input
-                            </h2>
-                            <div>
-                                <h4>Welcome <em>{this.state.user.fullName}</em>!
-                                </h4>
-                                <p>
-                                    <label>First Name: </label>
-                                    <input type="text" onChange={(ev) => {this.setState({user: {...this.state.user, firstName$: ev.target.value}})}} value={this.state.user.firstName$} />
-                                </p>
+        var palindrom = new PalindromDOM({ remoteUrl: window.location.href, onStateReset: function (obj) { class MyComponent extends
+        React.Component { constructor() { super(); this.state = { ...palindrom.obj }; palindrom.onRemoteChange = this.remoteUpdateHappened.bind(this);
+        } remoteUpdateHappened() { this.updating = true; this.setState({...palindrom.obj}, () => this.updating = false);
+        } componentDidUpdate() { if(!this.updating) Object.assign(palindrom.obj.user, this.state.user); } render() { const
+        section =
+        <section>
+            <h2>
+                Capturing input
+            </h2>
+            <div>
+                <h4>Welcome <em>{this.state.user.fullName}</em>!
+                </h4>
+                <p>
+                    <label>First Name: </label>
+                    <input type="text" onChange={(ev)=> {this.setState({user: {...this.state.user, firstName$: ev.target.value}})}}
+                    value={this.state.user.firstName$} />
+                </p>
 
-                                <p>
-                                    <label>Last Name: </label>
-                                    <input type="text" onChange={(ev) => {this.setState({user: {...this.state.user, lastName$: ev.target.value}})}} value={this.state.user.lastName$} />
-                                </p>
-                                <button onClick={() => {obj.user.resetNameClicked$ = true}}>Replace with Newton!</button>
-                            </div>
-                        </section>;
-
-                        return section;
-                    }
-                }
-                ReactDOM.render(
-                    <MyComponent />,
-                    document.getElementById('app')
-                );
-            },
-            listenTo: document.getElementById('listeningScope'),
-            debug: false
-        });
+                <p>
+                    <label>Last Name: </label>
+                    <input type="text" onChange={(ev)=> {this.setState({user: {...this.state.user, lastName$: ev.target.value}})}}
+                    value={this.state.user.lastName$} />
+                </p>
+                <button onClick={()=> {obj.user.resetNameClicked$ = true}}>Replace with Newton!</button>
+            </div>
+        </section>; return section; } } ReactDOM.render(
+        <MyComponent />, document.getElementById('app') ); }, listenTo: document.getElementById('listeningScope'), debug: false });
     </script>
 </body>
 
