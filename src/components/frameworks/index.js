@@ -8,32 +8,50 @@ class Frameworks extends Component {
   render() {
     return (
       <div className="frameworks">
-        <h2 className='section-catch-phrase'>Plays well with</h2>
+        <h2 className="section-catch-phrase">Plays well with</h2>
         <div className="framework">
-          <a href="lab/polymer/index.html" target="_blank" rel="noopener noreferrer">
+          <a
+            href="lab/polymer/index.html"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <div>
               <img alt="Polymer Logo" src={PolymerLogo} />
             </div>
             <hr />
-            <div><h3>Polymer</h3></div>
+            <div>
+              <h3>Polymer</h3>
+            </div>
           </a>
         </div>
         <div className="framework">
-          <a href="lab/vue/index.html" target="_blank" rel="noopener noreferrer">
+          <a
+            href="lab/react/index.html"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <div>
-              <img alt="React Logo" src={ReactLogo} />
+              <img alt="Vue Logo" src={ReactLogo} />
             </div>
             <hr />
-            <div><h3>Vue</h3></div>
+            <div>
+              <h3>React</h3>
+            </div>
           </a>
         </div>
         <div className="framework">
-          <a href="lab/react/index.html" target="_blank" rel="noopener noreferrer">
+          <a
+            href="lab/vue/index.html"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <div>
-              <img alt="Vue Logo" src={VueLogo} />
+              <img alt="React Logo" src={VueLogo} />
             </div>
             <hr />
-            <div><h3>React</h3></div>
+            <div>
+              <h3>Vue</h3>
+            </div>
           </a>
         </div>
       </div>
