@@ -10,7 +10,7 @@ class Footer extends Component {
           <div className="logo-and-name">
             <p><img src={SCLogo} alt="Starcounter Logo" /></p>
             <p>
-              <a href="https://www.starcounter.io">
+              <a href="https://starcounter.io/open-source/">
                 Starcounter Opensource
               </a>
             </p>
