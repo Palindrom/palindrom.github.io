@@ -10,10 +10,7 @@ class Docs extends Component {
     super();
 
     const initState = { versions: [], docsSections: [] };
-    if (props.match) {
-      initState.currentVersion = props.match.params.version;
-    }
-    if (props.match.params.section) {
+    if (props.match && props.match.params.section) {
       initState.currentSection = props.match.params.section;
     }
     this.state = initState;
@@ -40,9 +37,8 @@ class Docs extends Component {
           let MDSetCorrectly = false;
           // if section is chosen load it
           if (this.state.currentSection) {
-            const a = this.state.currentSection;
             const MDFile = filesAndDirs.find(
-              x => x.name == this.state.currentSection + '.md'
+              x => x.name === this.state.currentSection + '.md'
             );
             if (MDFile) {
               // 404
@@ -63,6 +59,7 @@ class Docs extends Component {
       })
       .catch(error => {
         this.setState({ error: '404: Not found' });
+        console.error(error);
       });
   }
 
@@ -86,12 +83,15 @@ class Docs extends Component {
       const latestVersion = tags[0].name;
 
       if (!this.state.currentVersion) {
-        this.getAllDocsSections(latestVersion);
+        // set current version then fetch its docs
+        this.setState({currentVersion: latestVersion}, () => {
+          this.getAllDocsSections(latestVersion);
+        });        
       } else {
         this.getAllDocsSections(this.state.currentVersion);
       }
     }).catch(error => {
-      this.setState('404: Not found');
+      this.setState({error: '404: Not found'});
     });
   }
   componentDidMount() {
