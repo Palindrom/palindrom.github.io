@@ -21,7 +21,7 @@ export function fetchAndCacheText(url, expire = 0) {
 
     fetch(url, { headers, mode: 'cors', redirect: 'follow' })
       .then(res => {
-         if(res.state > 400) {
+         if(res.status > 400) {
             throw URIError();
          } 
          return res.text()
