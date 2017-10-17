@@ -107,7 +107,7 @@ class Docs extends Component {
       this.setState(newState, () => {
         this.fetchDocs();
       });
-      
+
     } else this.fetchDocs();
   }
   componentWillReceiveProps(props) {
@@ -160,12 +160,12 @@ class Docs extends Component {
                       <li key={key}>
                         <Link
                           to={`/docs/${this.state
-                            .currentVersion}/${section.name.replace(
+                            .currentVersion}/${encodeURIComponent(section.name.replace(
                             '.md',
                             ''
-                          )}`}
+                          ))}`}
                         >
-                          {section.name.replace('.md', '')}
+                          {section.name.replace('.md', '').replace('_', ' ')}
                         </Link>
                       </li>
                     );
