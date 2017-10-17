@@ -9,7 +9,7 @@ class Navigation extends Component {
       <nav className="container">
         <ul>
           <li><Link to='/'>Home</Link></li>
-          <li><Link to='docs'>Docs</Link></li>
+          <li><Link to='/docs'>Docs</Link></li>
           <li>
             <a href="https://github.com/Palindrom/Palindrom">Issue Tracker</a>
           </li>

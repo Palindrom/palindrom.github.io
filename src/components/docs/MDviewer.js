@@ -10,7 +10,6 @@ class MDViewer extends Component {
     return { __html };
   }
   viewMDFile(URL) {
-    debugger;
     this.setState({ markup: '' });
     fetchAndCacheText(URL).then(HTML => {
       this.setState(

@@ -65,37 +65,50 @@ class Docs extends Component {
 
   fetchDocs() {
     const cacheTimeInMilliseconds = 7200 * 1000; // two hours
-    /* get latest release README */
+    /* get releases */
     fetchAndCacheText(
       'https://api.github.com/repos/palindrom/palindrom/tags',
       cacheTimeInMilliseconds
-    ).then(tags => {
-      tags = JSON.parse(tags);
-      tags = tags.sort((a, b) => {
-        a = a.name;
-        b = b.name;
-        a = a[0] === 'v' ? a.substr(1) : a;
-        b = b[0] === 'v' ? b.substr(1) : b;
-        return b.localeCompare(a);
-      });
-      tags.push({ name: 'master' });
-      this.setState({ versions: tags });
-      const latestVersion = tags[0].name;
+    )
+      .then(tags => {
+        tags = JSON.parse(tags);
+        tags = tags.sort((a, b) => {
+          a = a.name;
+          b = b.name;
+          a = a[0] === 'v' ? a.substr(1) : a;
+          b = b[0] === 'v' ? b.substr(1) : b;
+          return b.localeCompare(a);
+        });
+        tags.unshift({ name: 'master' });
+        this.setState({ versions: tags });
+        const latestVersion = tags[1].name;
 
-      if (!this.state.currentVersion) {
-        // set current version then fetch its docs
-        this.setState({currentVersion: latestVersion}, () => {
-          this.getAllDocsSections(latestVersion);
-        });        
-      } else {
-        this.getAllDocsSections(this.state.currentVersion);
-      }
-    }).catch(error => {
-      this.setState({error: '404: Not found'});
-    });
+        if (!this.state.currentVersion) {
+          // set current version then fetch its docs
+          this.setState({ currentVersion: latestVersion }, () => {
+            this.getAllDocsSections(latestVersion);
+          });
+        } else {
+          this.getAllDocsSections(this.state.currentVersion);
+        }
+      })
+      .catch(error => {
+        this.setState({ error: '404: Not found' });
+      });
   }
   componentDidMount() {
-    this.fetchDocs();
+    if (this.props.match) {
+      const version = this.props.match.params.version;
+      const newState = { currentVersion: version };
+
+      if (this.props.match.params.section)
+        newState['currentSection'] = this.props.match.params.section;
+
+      this.setState(newState, () => {
+        this.fetchDocs();
+      });
+      
+    } else this.fetchDocs();
   }
   componentWillReceiveProps(props) {
     if (props.match) {
@@ -127,48 +140,48 @@ class Docs extends Component {
               }}
               className="version-select"
             >
-              {this.state.versions.map((v, key) => {
-                return (
-                  <option key={v.name} value={v.name}>
-                    {v.name}
-                  </option>
-                );
-              })}
+              {this.state.versions.map((v, key) => (
+                <option key={v.name} value={v.name}>
+                  {v.name}
+                </option>
+              ))}
             </select>
           </div>
           <div className="clearfix" />
         </div>
         <div className="nav-and-readme-wrapper">
           <div className="navigation">
-            {this.state.docsSections.length
-              ? <div>
-                  <h3>Sections</h3>
-                  <ul>
-                    {this.state.docsSections.map((section, key) => {
-                      return (
-                        <li key={key}>
-                          <Link
-                            to={`/docs/${this.state
-                              .currentVersion}/${section.name.replace(
-                              '.md',
-                              ''
-                            )}`}
-                          >
-                            {section.name.replace('.md', '')}
-                          </Link>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </div>
-              : ''}
+            {this.state.docsSections.length ? (
+              <div>
+                <h3>Sections</h3>
+                <ul>
+                  {this.state.docsSections.map((section, key) => {
+                    return (
+                      <li key={key}>
+                        <Link
+                          to={`/docs/${this.state
+                            .currentVersion}/${section.name.replace(
+                            '.md',
+                            ''
+                          )}`}
+                        >
+                          {section.name.replace('.md', '')}
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            ) : (
+              ''
+            )}
           </div>
           <div id="dynamic-docs-wrapper" className="container">
-            {this.state.error
-              ? <h1>
-                  {this.state.error}
-                </h1>
-              : <MDViewer url={this.state.MDUrl} />}
+            {this.state.error ? (
+              <h1>{this.state.error}</h1>
+            ) : (
+              <MDViewer url={this.state.MDUrl} />
+            )}
           </div>
         </div>
       </div>
