@@ -6,7 +6,7 @@ import './style.css';
 class Navigation extends Component {
   render() {
     return (
-      <nav className="container">
+      <nav className="container main-nav">
         <ul>
           <li><Link to='/'>Home</Link></li>
           <li><Link to='/docs'>Docs</Link></li>

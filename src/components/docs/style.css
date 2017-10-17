@@ -29,13 +29,25 @@
 }
 .nav-and-readme-wrapper {
   display: grid;
-  grid-template-columns: 300px max-content;
-  grid-gap: 5px;
+  grid-template-columns: auto minmax(min-content, 1fr);
+  grid-template-rows: auto minmax(min-content, 1fr) auto;
+  margin: 10px auto;
 }
-.navigation {
-  padding: 0 1em;
-  border-right: 1px solid #eee;
+aside {
+  grid-column: 1;
+  grid-row: 2;
+  background-color: #fff;
+  padding: 0px 10px;
+  border-right: 1px solid #eee  
 }
+main {
+  grid-column: 2;
+  grid-row: 2;
+  align-self: start;
+  margin-left: 18px;
+  padding: 15px 10px 100px 10px;
+}
+
 .navigation ul {
   font-size: 1.2em;
   line-height: 1.8em;

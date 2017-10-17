@@ -107,7 +107,6 @@ class Docs extends Component {
       this.setState(newState, () => {
         this.fetchDocs();
       });
-
     } else this.fetchDocs();
   }
   componentWillReceiveProps(props) {
@@ -150,39 +149,40 @@ class Docs extends Component {
           <div className="clearfix" />
         </div>
         <div className="nav-and-readme-wrapper">
-          <div className="navigation">
-            {this.state.docsSections.length ? (
-              <div>
-                <h3>Sections</h3>
-                <ul>
-                  {this.state.docsSections.map((section, key) => {
-                    return (
-                      <li key={key}>
-                        <Link
-                          to={`/docs/${this.state
-                            .currentVersion}/${encodeURIComponent(section.name.replace(
-                            '.md',
-                            ''
-                          ))}`}
-                        >
-                          {section.name.replace('.md', '').replace('_', ' ')}
-                        </Link>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
-            ) : (
-              ''
-            )}
-          </div>
-          <div id="dynamic-docs-wrapper" className="container">
+          <aside>
+            <nav className='navigation'>
+              {this.state.docsSections.length ? (
+                <div>
+                  <h3>Sections</h3>
+                  <ul>
+                    {this.state.docsSections.map((section, key) => {
+                      return (
+                        <li key={key}>
+                          <Link
+                            to={`/docs/${this.state
+                              .currentVersion}/${encodeURIComponent(
+                              section.name.replace('.md', '')
+                            )}`}
+                          >
+                            {section.name.replace('.md', '').replace(/_/g, ' ')} 
+                          </Link>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              ) : (
+                ''
+              )}
+            </nav>
+          </aside>
+          <main>
             {this.state.error ? (
               <h1>{this.state.error}</h1>
             ) : (
               <MDViewer url={this.state.MDUrl} />
             )}
-          </div>
+          </main>
         </div>
       </div>
     );
