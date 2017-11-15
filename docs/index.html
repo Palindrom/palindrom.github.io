@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Documentation for Palindrom library">
+  <meta name="author" content="Palindrom Authors">
+  <link rel="shortcut icon" href="./img/favicon.ico">
+  <title>Palindrom - Palindrom Docs</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="./css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="./css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="./css/highlight.css">
+  <link href="./css/style.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Palindrom";
+    var mkdocs_page_input_path = "index.md";
+    var mkdocs_page_url = "/";
+  </script>
+  
+  <script src="./js/jquery-2.1.1.min.js"></script>
+  <script src="./js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="./js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="." class="icon icon-home"> Palindrom Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href=".">Palindrom</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#palindrom">Palindrom</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#binds-client-side-view-models-to-server-side-view-models-using-json-patch-and-http-patchwebsocket">Binds client side view models to server side view models using JSON-Patch and HTTP PATCH/WebSocket.</a></li>
+        
+            <li><a class="toctree-l3" href="#license">License</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="01-_Installation/">01  Installation</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="02-_Palindrom/">02  Palindrom</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="03-_Filtering Patches/">03  Filtering Patches</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="04-_PalindromDOM/">04  PalindromDOM</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="05-_Navigation_Interception/">05  Navigation Interception</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="06-_Dependencies/">06  Dependencies</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="07-_Numbers/">07  Numbers</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="08-_Development/">08  Development</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="09-_Changelog/">09  Changelog</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href=".">Palindrom Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Palindrom</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/Palindrom/Palindrom/edit/master/docs/index.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="palindrom">Palindrom<a class="headerlink" href="#palindrom" title="Permanent link">&para;</a></h1>
+<p><p align="center">
+  <img title="Palindrom" alt="Palindrom Logo" src="https://cloud.githubusercontent.com/assets/17054134/25017514/5f22bcd4-2084-11e7-816c-ee249e1b3164.png">
+</p></p>
+<h2 id="binds-client-side-view-models-to-server-side-view-models-using-json-patch-and-http-patchwebsocket">Binds client side view models to server side view models using JSON-Patch and HTTP PATCH/WebSocket.<a class="headerlink" href="#binds-client-side-view-models-to-server-side-view-models-using-json-patch-and-http-patchwebsocket" title="Permanent link">&para;</a></h2>
+<p><a href="https://travis-ci.org/Palindrom/Palindrom"><img alt="Build Status" src="https://travis-ci.org/Palindrom/Palindrom.svg?branch=master" /></a>
+<a href="https://badge.fury.io/js/palindrom"><img alt="npm version" src="https://badge.fury.io/js/palindrom.svg" /></a>
+<a href="https://opensource.org/licenses/MIT"><img alt="MIT" src="https://badges.frapsoft.com/os/mit/mit.svg?v=102" /></a></p>
+<hr />
+<p>Implements <a href="https://github.com/Starcounter-Jack/PuppetJs/wiki/Server-communication">Server communication</a>.</p>
+<pre><code class="js">/**
+ * Defines a connection to a remote PATCH server, gives an object that is persistent between browser and server
+ */
+var palindrom = new Palindrom({remoteUrl: window.location.href});
+
+// ...
+// use palindrom.obj
+palindrom.obj.someProperty = &quot;new value&quot;;
+// Your change gets propagated automatically to the remote, no glue code needed.
+</code></pre>
+
+<h3 id="documentation"><a href="https://palindrom.github.io/#/docs">Documentation</a><a class="headerlink" href="#documentation" title="Permanent link">&para;</a></h3>
+<hr />
+<h3 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h3>
+<h4 id="you-can-install-using-bower-and-npm">You can install using <a href="http://bower.io/">bower</a> and <a href="http://npmjs.com/">NPM</a>:<a class="headerlink" href="#you-can-install-using-bower-and-npm" title="Permanent link">&para;</a></h4>
+<h5 id="bower">Bower:<a class="headerlink" href="#bower" title="Permanent link">&para;</a></h5>
+<pre><code class="sh">bower install Palindrom --save
+</code></pre>
+
+<p>Then add source to your HTML</p>
+<pre><code class="html">
+&lt;!-- include Palindrom bundle --&gt;
+&lt;script src=&quot;bower_components/Palindrom/dist/palindrom.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+
+<p>See <a href="https://github.com/Palindrom/Palindrom#dependencies">Dependencies section</a> for more details.</p>
+<h5 id="npm">NPM:<a class="headerlink" href="#npm" title="Permanent link">&para;</a></h5>
+<pre><code class="sh">npm install palindrom --save
+</code></pre>
+
+<p>Then you can require it CommonJS or ES6/TS style:</p>
+<pre><code class="js">//CommonJS
+var Palindrom = require('palindrom');
+
+// ES6/TS
+import Palindrom from 'palindrom'
+</code></pre>
+
+<h6 id="or-just-download-it-manually-from-github">Or just download it manually from <a href="https://github.com/Palindrom/Palindrom/archive/master.zip">github</a>.<a class="headerlink" href="#or-just-download-it-manually-from-github" title="Permanent link">&para;</a></h6>
+<h3 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h3>
+<p>After DOM is ready, initialize with the constructor:</p>
+<pre><code class="js">/**
+ * Defines a connection to a remote PATCH server, gives an object that is persistent between browser and server
+ */
+var palindrom = new Palindrom({remoteUrl: window.location.href});
+
+// ..
+// use palindrom.obj
+palindrom.obj.someProperty = &quot;new value&quot;;
+</code></pre>
+
+<ul>
+<li><em>Note 1: Please make sure you pass the correct PATCH server URL.</em></li>
+<li><em>Note 2: <code>palindrom.obj</code> is only available after <code>options.onStateReset</code> is called.</em></li>
+</ul>
+<h3 id="demo">Demo<a class="headerlink" href="#demo" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="http://Palindrom.github.io/lab/polymer/index.html">Example with Polymer's Template Binding and Web Components</a></li>
+<li><a href="http://Palindrom.github.io/lab/vue/index.html">Example with Vue</a></li>
+<li><a href="http://Palindrom.github.io/lab/react/index.html">Example with React</a></li>
+</ul>
+<h3 id="changelog">Changelog<a class="headerlink" href="#changelog" title="Permanent link">&para;</a></h3>
+<p>To see the list of recent changes, see <a href="https://github.com/Palindrom/Palindrom/releases">Releases</a>.</p>
+<h2 id="license">License<a class="headerlink" href="#license" title="Permanent link">&para;</a></h2>
+<p>MIT</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="01-_Installation/" class="btn btn-neutral float-right" title="01  Installation">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Starcounter AB</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/Palindrom/Palindrom/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+        <span style="margin-left: 15px"><a href="01-_Installation/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '.';</script>
+    <script src="./js/theme.js"></script>
+      <script src="./search/require.js"></script>
+      <script src="./search/search.js"></script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 0.17.1
+Build Date UTC : 2017-11-15 16:05:00
+-->

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    
+    <url>
+     <loc>/</loc>
+     <lastmod>2017-11-15</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/01-_Installation/</loc>
+     <lastmod>2017-11-15</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/02-_Palindrom/</loc>
+     <lastmod>2017-11-15</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/03-_Filtering Patches/</loc>
+     <lastmod>2017-11-15</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/04-_PalindromDOM/</loc>
+     <lastmod>2017-11-15</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/05-_Navigation_Interception/</loc>
+     <lastmod>2017-11-15</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/06-_Dependencies/</loc>
+     <lastmod>2017-11-15</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/07-_Numbers/</loc>
+     <lastmod>2017-11-15</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/08-_Development/</loc>
+     <lastmod>2017-11-15</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/09-_Changelog/</loc>
+     <lastmod>2017-11-15</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+</urlset>
