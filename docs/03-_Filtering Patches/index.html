@@ -8,7 +8,7 @@
   
   <meta name="author" content="Palindrom Authors">
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>03  Filtering Patches - Palindrom Docs</title>
+  <title>Filtering Patches - Palindrom Docs</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -18,7 +18,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "03  Filtering Patches";
+    var mkdocs_page_name = "Filtering Patches";
     var mkdocs_page_input_path = "03-_Filtering Patches.md";
     var mkdocs_page_url = "/03-_Filtering Patches/";
   </script>
@@ -50,12 +50,12 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="..">Palindrom</a>
+    <a class="" href="..">Intro</a>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../01-_Installation/">01  Installation</a>
+    <a class="" href="../01-_Installation/">Installation</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -65,7 +65,7 @@
           
             <li class="toctree-l1 current">
 		
-    <a class="current" href="./">03  Filtering Patches</a>
+    <a class="current" href="./">Filtering Patches</a>
     <ul class="subnav">
             
     <li class="toctree-l2"><a href="#filtering-patches">Filtering Patches</a></li>
@@ -136,7 +136,7 @@
     
       
     
-    <li>03  Filtering Patches</li>
+    <li>Filtering Patches</li>
     <li class="wy-breadcrumbs-aside">
       
         <a href="https://github.com/Palindrom/Palindrom/edit/master/docs/03-_Filtering Patches.md"
@@ -149,7 +149,7 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="filtering-patches">Filtering Patches<a class="headerlink" href="#filtering-patches" title="Permanent link">&para;</a></h2>
+                <h1 id="filtering-patches">Filtering Patches<a class="headerlink" href="#filtering-patches" title="Permanent link">&para;</a></h1>
 <p>Palindrom deeply observes changes made to the <code>palindrom.obj</code> object and converts them to patches. If you have a need to ignore some kind of changes, there are two ways to do it. Either make the changes in non-enumerable property or use a filtering function to ignore changes made in the enumerable properties.</p>
 <h3 id="1-by-defining-non-enumerable-properties-recommended">1. By defining non-enumerable properties <em>(recommended)</em>:<a class="headerlink" href="#1-by-defining-non-enumerable-properties-recommended" title="Permanent link">&para;</a></h3>
 <p>Palindrom only generates patches for the enumerable properties of <code>palindrom.obj</code> and its subtrees. To create a part of the tree that is invisible for Palindrom's patch collection, define a non-enumerable property.</p>

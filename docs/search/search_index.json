@@ -2,73 +2,23 @@
     "docs": [
         {
             "location": "/",
-            "text": "Palindrom\n\u00b6\n\n\n\n  \n\n\n\n\nBinds client side view models to server side view models using JSON-Patch and HTTP PATCH/WebSocket.\n\u00b6\n\n\n\n\n\n\n\n\n\n\nImplements \nServer communication\n.\n\n\n/**\n * Defines a connection to a remote PATCH server, gives an object that is persistent between browser and server\n */\nvar palindrom = new Palindrom({remoteUrl: window.location.href});\n\n// ...\n// use palindrom.obj\npalindrom.obj.someProperty = \"new value\";\n// Your change gets propagated automatically to the remote, no glue code needed.\n\n\n\n\nDocumentation\n\u00b6\n\n\n\n\nInstallation\n\u00b6\n\n\nYou can install using \nbower\n and \nNPM\n:\n\u00b6\n\n\nBower:\n\u00b6\n\n\nbower install Palindrom --save\n\n\n\n\nThen add source to your HTML\n\n\n\n<!-- include Palindrom bundle -->\n<script src=\"bower_components/Palindrom/dist/palindrom.js\"></script>\n\n\n\n\nSee \nDependencies section\n for more details.\n\n\nNPM:\n\u00b6\n\n\nnpm install palindrom --save\n\n\n\n\nThen you can require it CommonJS or ES6/TS style:\n\n\n//CommonJS\nvar Palindrom = require('palindrom');\n\n// ES6/TS\nimport Palindrom from 'palindrom'\n\n\n\n\nOr just download it manually from \ngithub\n.\n\u00b6\n\n\nUsage\n\u00b6\n\n\nAfter DOM is ready, initialize with the constructor:\n\n\n/**\n * Defines a connection to a remote PATCH server, gives an object that is persistent between browser and server\n */\nvar palindrom = new Palindrom({remoteUrl: window.location.href});\n\n// ..\n// use palindrom.obj\npalindrom.obj.someProperty = \"new value\";\n\n\n\n\n\n\nNote 1: Please make sure you pass the correct PATCH server URL.\n\n\nNote 2: \npalindrom.obj\n is only available after \noptions.onStateReset\n is called.\n\n\n\n\nDemo\n\u00b6\n\n\n\n\nExample with Polymer's Template Binding and Web Components\n\n\nExample with Vue\n\n\nExample with React\n\n\n\n\nChangelog\n\u00b6\n\n\nTo see the list of recent changes, see \nReleases\n.\n\n\nLicense\n\u00b6\n\n\nMIT",
-            "title": "Palindrom"
+            "text": "Intro\n\u00b6\n\n\n\n  \n\n\n\n\n\nBinds client side view models to server side view models using JSON-Patch and HTTP PATCH/WebSocket.\n\u00b6",
+            "title": "Intro"
         },
         {
-            "location": "/#palindrom",
+            "location": "/#intro",
             "text": "",
-            "title": "Palindrom"
+            "title": "Intro"
         },
         {
             "location": "/#binds-client-side-view-models-to-server-side-view-models-using-json-patch-and-http-patchwebsocket",
-            "text": "Implements  Server communication .  /**\n * Defines a connection to a remote PATCH server, gives an object that is persistent between browser and server\n */\nvar palindrom = new Palindrom({remoteUrl: window.location.href});\n\n// ...\n// use palindrom.obj\npalindrom.obj.someProperty = \"new value\";\n// Your change gets propagated automatically to the remote, no glue code needed.",
+            "text": "",
             "title": "Binds client side view models to server side view models using JSON-Patch and HTTP PATCH/WebSocket."
-        },
-        {
-            "location": "/#documentation",
-            "text": "",
-            "title": "Documentation"
-        },
-        {
-            "location": "/#installation",
-            "text": "",
-            "title": "Installation"
-        },
-        {
-            "location": "/#you-can-install-using-bower-and-npm",
-            "text": "",
-            "title": "You can install using bower and NPM:"
-        },
-        {
-            "location": "/#bower",
-            "text": "bower install Palindrom --save  Then add source to your HTML  \n<!-- include Palindrom bundle -->\n<script src=\"bower_components/Palindrom/dist/palindrom.js\"></script>  See  Dependencies section  for more details.",
-            "title": "Bower:"
-        },
-        {
-            "location": "/#npm",
-            "text": "npm install palindrom --save  Then you can require it CommonJS or ES6/TS style:  //CommonJS\nvar Palindrom = require('palindrom');\n\n// ES6/TS\nimport Palindrom from 'palindrom'",
-            "title": "NPM:"
-        },
-        {
-            "location": "/#or-just-download-it-manually-from-github",
-            "text": "",
-            "title": "Or just download it manually from github."
-        },
-        {
-            "location": "/#usage",
-            "text": "After DOM is ready, initialize with the constructor:  /**\n * Defines a connection to a remote PATCH server, gives an object that is persistent between browser and server\n */\nvar palindrom = new Palindrom({remoteUrl: window.location.href});\n\n// ..\n// use palindrom.obj\npalindrom.obj.someProperty = \"new value\";   Note 1: Please make sure you pass the correct PATCH server URL.  Note 2:  palindrom.obj  is only available after  options.onStateReset  is called.",
-            "title": "Usage"
-        },
-        {
-            "location": "/#demo",
-            "text": "Example with Polymer's Template Binding and Web Components  Example with Vue  Example with React",
-            "title": "Demo"
-        },
-        {
-            "location": "/#changelog",
-            "text": "To see the list of recent changes, see  Releases .",
-            "title": "Changelog"
-        },
-        {
-            "location": "/#license",
-            "text": "MIT",
-            "title": "License"
         },
         {
             "location": "/01-_Installation/",
             "text": "Installation\n\u00b6\n\n\nYou can install using \nbower\n and \nNPM\n:\n\u00b6\n\n\nBower:\n\u00b6\n\n\nbower install Palindrom --save\n\n\n\n\nThen add source to your HTML\n\n\n<!-- include Palindrom bundle -->\n<script src=\"bower_components/Palindrom/dist/palindrom.js\"></script>\n\n\n\n\nSee \nDependencies section\n for more details.\n\n\nNPM:\n\u00b6\n\n\nnpm install palindrom --save\n\n\n\n\nThen you can require it CommonJS or ES6/TS style:\n\n\n//CommonJS\nvar Palindrom = require('palindrom');\n\n// ES6/TS\nimport Palindrom from 'palindrom'\n\n\n\n\nOr just download it manually from \ngithub\n.\n\u00b6",
-            "title": "01  Installation"
+            "title": "Installation"
         },
         {
             "location": "/01-_Installation/#installation",
@@ -153,7 +103,7 @@
         {
             "location": "/03-_Filtering Patches/",
             "text": "Filtering Patches\n\u00b6\n\n\nPalindrom deeply observes changes made to the \npalindrom.obj\n object and converts them to patches. If you have a need to ignore some kind of changes, there are two ways to do it. Either make the changes in non-enumerable property or use a filtering function to ignore changes made in the enumerable properties.\n\n\n1. By defining non-enumerable properties \n(recommended)\n:\n\u00b6\n\n\nPalindrom only generates patches for the enumerable properties of \npalindrom.obj\n and its subtrees. To create a part of the tree that is invisible for Palindrom's patch collection, define a non-enumerable property.\n\n\nAssuming your Palindrom instance is instantiated and your \npalindrom.obj\n is ready, you can create a non-enumerable object child in \npalindrom.obj\n and use it as a local non-observed store for your needs.\n\n\nExample:\n\u00b6\n\n\nObject.defineProperty(palindrom.obj, \"myLocalNonSyncedObject\", {\n    enumerable: false,\n    value: {}\n});\n\n\n\n\nNow \npalindrom.obj.myLocalNonSyncedObject\n is an object this is not observed for patch generation. This is ideal for keeping client-side related information (eg: div height, or something like \nisModalWarningDisplayed = true\n).\n\n\nExample:\n\n\npalindrom.obj.myLocalNonSyncedObject.divHeight = 50;\n\n\n\n\n... does not generate a patch.\n\n\nNote:  In most cases, the added property is recommended to be an object.\n*\n\n\n*Note: You should not replace the value of the non-enumerable property after it has been defined. Otherwise Palindrom will still detect the change. If you want to modify the unobserved values, you should declare the non-enumerable property as an object and only modify its children.\n\n\n2. By extending \nPalindrom#filterLocalChange\n\u00b6\n\n\nYou can discard a generated patch by extending \nPalindrom.filterLocalChange\n function. This function accepts a JSON Patch operation and either returns it or returns a falsy value. Returning a falsy value results in ignoring this operation.\n\n\nExample\n\u00b6\n\n\nconst palindrom = new Palindrom({ remoteUrl: window.location.href });\n\nvar old = palindrom.filterLocalChange;\npalindrom.filterLocalChange = function(operation) {\n    operation = old.call(palindrom, operation); //make sure you don't overwrite other filters\n    if (operation && !operation.path.startsWith('$')) {\n        return operation;\n    }\n}\n// use palindrom.obj\npalindrom.obj.$someProperty = 'new value'; // this change will be ignored and will not reach the server\n\n\n\n\nYou can also pass \nfilterLocalChange\n to Palindrom constructor as in:\n\n\nconst palindrom = new Palindrom({ remoteUrl: window.location.href, filterLocalChange: op => !op.path.startsWith('$') && op });",
-            "title": "03  Filtering Patches"
+            "title": "Filtering Patches"
         },
         {
             "location": "/03-_Filtering Patches/#filtering-patches",
@@ -223,7 +173,7 @@
         {
             "location": "/05-_Navigation_Interception/",
             "text": "Navigation Interception\n\u00b6\n\n\nPalindromDOM gives a regular HTML document the benefits of a single-page application by adding a special optimisation to the internal web links.  \n\n\nRegular links in the current host are cancelled and replaced by a GET \nXMLHttpRequest\n to the same URL with \nAccept: application/json-patch+json\n header. Upon this request, the server modifies the model and responds with a patch that contains the minimum set of changes to navigate to the URL.\n\n\nThe browser navigation (i.e. the back, forward and reload buttons) is preserved by the use of the HTML5 History API.\n\n\nOnly links in the current host without the target attribute or with the target attribute set to \n_self\n are intercepted.\n\n\nHow to disable interception\n\u00b6\n\n\nSometimes, you need to disable interception even for links within the application. And as mentioned above, if you set the target attribute to anything else than \n_self\n, the navigation from that anchor will not be intercepted.\n\n\nExample:\n\n\n<a href=\"internalLink.html\" target=\"_top\">Go to internal link</a>\n\n\n\n\n... even if \ninternalLink.html\n is part of your application, PalindromDOM will not intercept the navigation and the browser will issue a full HTTP request to \ninternalLink.html\n.\n\n\nAs the value of the \ntarget\n attribute, you might consider one of the following keywords that have a special meaning in HTML:\n\n\n\n\n_top\n - load the URL into the current browser tab or window\n\n\n_blank\n - load the URL into a new browser tab or window\n\n\n\n\nYou can find more information on the \ntarget\n attribute at \nMDN\n.",
-            "title": "05  Navigation Interception"
+            "title": "Navigation Interception"
         },
         {
             "location": "/05-_Navigation_Interception/#navigation-interception",
@@ -238,7 +188,7 @@
         {
             "location": "/06-_Dependencies/",
             "text": "Dependencies\n\u00b6\n\n\nIt depends on Native \nES6 Proxies\n. Check usability on \ncaniuse\n.\n\n\nIf you use the bundle, no file dependencies are needed. You can view all the dependencies in \npackage.json\n.",
-            "title": "06  Dependencies"
+            "title": "Dependencies"
         },
         {
             "location": "/06-_Dependencies/#dependencies",
@@ -248,7 +198,7 @@
         {
             "location": "/07-_Numbers/",
             "text": "Numbers\n\u00b6\n\n\nPalindrom is a JavaScript library that binds client-side view-models to server side view-models. While Palindrom is a JavaScript library, the server may or may not be built with JavaScript. And this can result in some differences in data types, particularly in numbers. To quote MDN's \nNumber\n page:\n\n\nvar biggestInt = 9007199254740991;\nvar smallestInt = -9007199254740991\n\n\n\n\n\n\nWhen parsing data that has been serialized to JSON, integer values falling out of this range can be expected to become corrupted when JSON parser coerces them to Number type. Using String instead is a possible workaround.\n\n\n\n\nIt is not a limitation of JSON, but of JavaScript, that all numbers are stored in memory as float64 (equivalent to \nDouble\n in C#). This means that numbers larger than +/- \n9007199254740991\n cannot be used in JavaScript without losing precision. \n\n\nNumbers validation\n\u00b6\n\n\nTo ensure the validity of your data all the time, Palindrom validates each number it comes across and throws an error when it encounters an out-of-range value, from both endpoints:\n\n\n\n\nFrom Server's endpoint\n: It calls \nonIncomingPatchValidationError\n with a \nRangeError\n with an elaborate message.\n\n\nFrom Client's endpoint\n: It calls \nonOutgoingPatchValidationError\n with a \nRangeError\n with an elaborate message.\n\n\n\n\nFor more information about these callbacks, please refer to Section 2.",
-            "title": "07  Numbers"
+            "title": "Numbers"
         },
         {
             "location": "/07-_Numbers/#numbers",
@@ -263,7 +213,7 @@
         {
             "location": "/08-_Development/",
             "text": "Development\n\u00b6\n\n\n\n\nMake a local clone of this repo: \ngit clone git@github.com:Palindrom/Palindrom.git\n\n\nGo to the directory: \ncd Palindrom\n\n\nInstall the local dependencies: \nnpm install\n\n\nStart the development server: \npolyserve -p 8000\n\n\nbundle by calling \nnpm run build\n in your shell.\n\n\nOpen the test suite: \nhttp://localhost:8000/components/Palindrom/test/MochaSpecRunner.html\n\n\n\n\nUpdating documentation\n\u00b6\n\n\nEverything in \ndocs\n folder is automatically fetched by the website and each MD file is considered a documentation section. Sections are sorted alphabetically; it's recommended to prefix your file with a numeric ordering index. Eg. (\n01-installation.md\n, \n02-development.md\n..etc).\n\n\nReleases\n\u00b6\n\n\nTo release new version run\n\n\nnpm version <patch|minor|major> # to replace version in files and tag the repo\ngit push && git push --tags\n...\nnpm publish\n\n\n\n\n\nTesting\n\u00b6\n\n\nYou can test Palindrom using three methods depending on your need (what you've modified):\n\n\n\n\nCLI testing:\n it is perfect for testing Palindrom only (as opposed to testing Palindrom + PalindromDOM). It's the fastest and the easiest to run, all you need to do is run:\n\n\n\n\nnpm run test\n\n\n\n\n\n\n\n\nLocal browser testing:\n This allows you to test (Palindrom + PalindromDOM), you can run it by following steps 4, 5, and 6 from \nDevelopment section\n.\n\n\n\n\n\n\nSauceLabs CLI Testing:\n This runs in the CLI, but it needs SauceLabs credentials, and Selenium needs to be running, to run it:\n\n\n\n\n\n\nInstall \nSauce Connect\n.\n\n\n\n\n\n\nAdd your \nSAUCE_USERNAME\n and \nSAUCE_ACCESS_KEY\n environment variables to your machine.\n\n\n\n\n\n\nConnect to SauceLabs using the command\n \nsc /u YOUR_SAUCE_USER /k YOUR_SAUCE_ACCESSKEY\n where \nsc\n is the executable you get when you download \nSauce Connect\n.\n\n\n\n\n\n\nStart a web server \npolyserve -p 8000\n\n\n\n\n\n\nIn project's root folder, run \nnpm run test-sauce",
-            "title": "08  Development"
+            "title": "Development"
         },
         {
             "location": "/08-_Development/#development",
@@ -288,7 +238,7 @@
         {
             "location": "/09-_Changelog/",
             "text": "Changelog\n\u00b6\n\n\nTo see the list of recent changes, see \nReleases\n.",
-            "title": "09  Changelog"
+            "title": "Changelog"
         },
         {
             "location": "/09-_Changelog/#changelog",

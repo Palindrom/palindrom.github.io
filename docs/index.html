@@ -8,7 +8,7 @@
   <meta name="description" content="Documentation for Palindrom library">
   <meta name="author" content="Palindrom Authors">
   <link rel="shortcut icon" href="./img/favicon.ico">
-  <title>Palindrom - Palindrom Docs</title>
+  <title>Intro - Palindrom Docs</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="./css/theme.css" type="text/css" />
@@ -18,7 +18,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Palindrom";
+    var mkdocs_page_name = "Intro";
     var mkdocs_page_input_path = "index.md";
     var mkdocs_page_url = "/";
   </script>
@@ -50,16 +50,14 @@
           
             <li class="toctree-l1 current">
 		
-    <a class="current" href=".">Palindrom</a>
+    <a class="current" href=".">Intro</a>
     <ul class="subnav">
             
-    <li class="toctree-l2"><a href="#palindrom">Palindrom</a></li>
+    <li class="toctree-l2"><a href="#intro">Intro</a></li>
     
         <ul>
         
             <li><a class="toctree-l3" href="#binds-client-side-view-models-to-server-side-view-models-using-json-patch-and-http-patchwebsocket">Binds client side view models to server side view models using JSON-Patch and HTTP PATCH/WebSocket.</a></li>
-        
-            <li><a class="toctree-l3" href="#license">License</a></li>
         
         </ul>
     
@@ -134,7 +132,7 @@
     
       
     
-    <li>Palindrom</li>
+    <li>Intro</li>
     <li class="wy-breadcrumbs-aside">
       
         <a href="https://github.com/Palindrom/Palindrom/edit/master/docs/index.md"
@@ -147,81 +145,15 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="palindrom">Palindrom<a class="headerlink" href="#palindrom" title="Permanent link">&para;</a></h1>
-<p><p align="center">
+                <h1 id="intro">Intro<a class="headerlink" href="#intro" title="Permanent link">&para;</a></h1>
+<p align="center">
   <img title="Palindrom" alt="Palindrom Logo" src="https://cloud.githubusercontent.com/assets/17054134/25017514/5f22bcd4-2084-11e7-816c-ee249e1b3164.png">
-</p></p>
+</p>
+
 <h2 id="binds-client-side-view-models-to-server-side-view-models-using-json-patch-and-http-patchwebsocket">Binds client side view models to server side view models using JSON-Patch and HTTP PATCH/WebSocket.<a class="headerlink" href="#binds-client-side-view-models-to-server-side-view-models-using-json-patch-and-http-patchwebsocket" title="Permanent link">&para;</a></h2>
 <p><a href="https://travis-ci.org/Palindrom/Palindrom"><img alt="Build Status" src="https://travis-ci.org/Palindrom/Palindrom.svg?branch=master" /></a>
 <a href="https://badge.fury.io/js/palindrom"><img alt="npm version" src="https://badge.fury.io/js/palindrom.svg" /></a>
 <a href="https://opensource.org/licenses/MIT"><img alt="MIT" src="https://badges.frapsoft.com/os/mit/mit.svg?v=102" /></a></p>
-<hr />
-<p>Implements <a href="https://github.com/Starcounter-Jack/PuppetJs/wiki/Server-communication">Server communication</a>.</p>
-<pre><code class="js">/**
- * Defines a connection to a remote PATCH server, gives an object that is persistent between browser and server
- */
-var palindrom = new Palindrom({remoteUrl: window.location.href});
-
-// ...
-// use palindrom.obj
-palindrom.obj.someProperty = &quot;new value&quot;;
-// Your change gets propagated automatically to the remote, no glue code needed.
-</code></pre>
-
-<h3 id="documentation"><a href="https://palindrom.github.io/#/docs">Documentation</a><a class="headerlink" href="#documentation" title="Permanent link">&para;</a></h3>
-<hr />
-<h3 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h3>
-<h4 id="you-can-install-using-bower-and-npm">You can install using <a href="http://bower.io/">bower</a> and <a href="http://npmjs.com/">NPM</a>:<a class="headerlink" href="#you-can-install-using-bower-and-npm" title="Permanent link">&para;</a></h4>
-<h5 id="bower">Bower:<a class="headerlink" href="#bower" title="Permanent link">&para;</a></h5>
-<pre><code class="sh">bower install Palindrom --save
-</code></pre>
-
-<p>Then add source to your HTML</p>
-<pre><code class="html">
-&lt;!-- include Palindrom bundle --&gt;
-&lt;script src=&quot;bower_components/Palindrom/dist/palindrom.js&quot;&gt;&lt;/script&gt;
-</code></pre>
-
-<p>See <a href="https://github.com/Palindrom/Palindrom#dependencies">Dependencies section</a> for more details.</p>
-<h5 id="npm">NPM:<a class="headerlink" href="#npm" title="Permanent link">&para;</a></h5>
-<pre><code class="sh">npm install palindrom --save
-</code></pre>
-
-<p>Then you can require it CommonJS or ES6/TS style:</p>
-<pre><code class="js">//CommonJS
-var Palindrom = require('palindrom');
-
-// ES6/TS
-import Palindrom from 'palindrom'
-</code></pre>
-
-<h6 id="or-just-download-it-manually-from-github">Or just download it manually from <a href="https://github.com/Palindrom/Palindrom/archive/master.zip">github</a>.<a class="headerlink" href="#or-just-download-it-manually-from-github" title="Permanent link">&para;</a></h6>
-<h3 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h3>
-<p>After DOM is ready, initialize with the constructor:</p>
-<pre><code class="js">/**
- * Defines a connection to a remote PATCH server, gives an object that is persistent between browser and server
- */
-var palindrom = new Palindrom({remoteUrl: window.location.href});
-
-// ..
-// use palindrom.obj
-palindrom.obj.someProperty = &quot;new value&quot;;
-</code></pre>
-
-<ul>
-<li><em>Note 1: Please make sure you pass the correct PATCH server URL.</em></li>
-<li><em>Note 2: <code>palindrom.obj</code> is only available after <code>options.onStateReset</code> is called.</em></li>
-</ul>
-<h3 id="demo">Demo<a class="headerlink" href="#demo" title="Permanent link">&para;</a></h3>
-<ul>
-<li><a href="http://Palindrom.github.io/lab/polymer/index.html">Example with Polymer's Template Binding and Web Components</a></li>
-<li><a href="http://Palindrom.github.io/lab/vue/index.html">Example with Vue</a></li>
-<li><a href="http://Palindrom.github.io/lab/react/index.html">Example with React</a></li>
-</ul>
-<h3 id="changelog">Changelog<a class="headerlink" href="#changelog" title="Permanent link">&para;</a></h3>
-<p>To see the list of recent changes, see <a href="https://github.com/Palindrom/Palindrom/releases">Releases</a>.</p>
-<h2 id="license">License<a class="headerlink" href="#license" title="Permanent link">&para;</a></h2>
-<p>MIT</p>
               
             </div>
           </div>
@@ -275,5 +207,5 @@ palindrom.obj.someProperty = &quot;new value&quot;;
 
 <!--
 MkDocs version : 0.17.1
-Build Date UTC : 2017-11-15 16:44:08
+Build Date UTC : 2017-11-15 18:11:19
 -->

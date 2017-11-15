@@ -8,7 +8,7 @@
   
   <meta name="author" content="Palindrom Authors">
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>05  Navigation Interception - Palindrom Docs</title>
+  <title>Navigation Interception - Palindrom Docs</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -18,7 +18,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "05  Navigation Interception";
+    var mkdocs_page_name = "Navigation Interception";
     var mkdocs_page_input_path = "05-_Navigation_Interception.md";
     var mkdocs_page_url = "/05-_Navigation_Interception/";
   </script>
@@ -50,12 +50,12 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="..">Palindrom</a>
+    <a class="" href="..">Intro</a>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="../01-_Installation/">01  Installation</a>
+    <a class="" href="../01-_Installation/">Installation</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -65,7 +65,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../03-_Filtering%20Patches/">03  Filtering Patches</a>
+    <a class="" href="../03-_Filtering%20Patches/">Filtering Patches</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -75,7 +75,7 @@
           
             <li class="toctree-l1 current">
 		
-    <a class="current" href="./">05  Navigation Interception</a>
+    <a class="current" href="./">Navigation Interception</a>
     <ul class="subnav">
             
     <li class="toctree-l2"><a href="#navigation-interception">Navigation Interception</a></li>
@@ -132,7 +132,7 @@
     
       
     
-    <li>05  Navigation Interception</li>
+    <li>Navigation Interception</li>
     <li class="wy-breadcrumbs-aside">
       
         <a href="https://github.com/Palindrom/Palindrom/edit/master/docs/05-_Navigation_Interception.md"
@@ -145,7 +145,7 @@
           <div role="main">
             <div class="section">
               
-                <h2 id="navigation-interception">Navigation Interception<a class="headerlink" href="#navigation-interception" title="Permanent link">&para;</a></h2>
+                <h1 id="navigation-interception">Navigation Interception<a class="headerlink" href="#navigation-interception" title="Permanent link">&para;</a></h1>
 <p>PalindromDOM gives a regular HTML document the benefits of a single-page application by adding a special optimisation to the internal web links.  </p>
 <p>Regular links in the current host are cancelled and replaced by a GET <code>XMLHttpRequest</code> to the same URL with <code>Accept: application/json-patch+json</code> header. Upon this request, the server modifies the model and responds with a patch that contains the minimum set of changes to navigate to the URL.</p>
 <p>The browser navigation (i.e. the back, forward and reload buttons) is preserved by the use of the HTML5 History API.</p>
