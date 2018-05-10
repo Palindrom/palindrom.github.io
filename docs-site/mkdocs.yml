@@ -1,0 +1,5 @@
+site_name: Palindrom Docs
+theme: readthedocs
+extra_css: [css/custom_style.css]
+repo_url: https://github.com/Palindrom/Palindrom
+edit_uri: 'tree/master/docs/'
