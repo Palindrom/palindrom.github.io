@@ -28,5 +28,22 @@ To have a website that is on `org.github.io` and not `org.github.io/websites-rep
 
 No production-related reason. But the development cycle is a big time savor.
 
+# Documentaion
+
+After you update the docs in Palindrom repository, you'll have to update `palindrom.github.io`. To do this, you'll need:
+
+1. Install [Python](https://www.python.org/downloads/).
+2. Install MkDocs (in short run `python -m pip install mkdocs`);
+3. In root dir, in your shell, execute `./fetchandbuild.sh`. 
+
+Now the docs are built.
+
+### Deploy
+
+1. If you want to deploy, you'll need `gh-pages` command. If you don't have it execute `npm install -g gh-pages` to install it.
+2. Run `gh-pages -b master -d build`.
+
+Done!
+
 ## License 
 MIT
