@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Navigation Interception - Palindrom Docs</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  <link href="../css/custom_style.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Navigation Interception";
+    var mkdocs_page_input_path = "05-_Navigation_Interception.md";
+    var mkdocs_page_url = "/05-_Navigation_Interception/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Palindrom Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Intro</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../01-_Installation/">Installation</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../02-_Palindrom/">Palindrom</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../03-_Filtering_and_ignoring_changes/">Filtering and ignoring changes</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../04-_PalindromDOM/">PalindromDOM</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Navigation Interception</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#navigation-interception">Navigation Interception</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#how-to-disable-interception">How to disable interception</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../06-_Dependencies/">06  Dependencies</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../07-_Numbers/">07  Numbers</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../08-_Development/">08  Development</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../09-_Changelog/">09  Changelog</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Palindrom Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Navigation Interception</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/Palindrom/Palindrom/tree/master/docs/05-_Navigation_Interception.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="navigation-interception">Navigation Interception</h1>
+<p>PalindromDOM gives a regular HTML document the benefits of a single-page application by adding a special optimisation to the internal web links.  </p>
+<p>Regular links in the current host are cancelled and replaced by a GET <code>XMLHttpRequest</code> to the same URL with <code>Accept: application/json-patch+json</code> header. Upon this request, the server modifies the model and responds with a patch that contains the minimum set of changes to navigate to the URL.</p>
+<p>The browser navigation (i.e. the back, forward and reload buttons) is preserved by the use of the HTML5 History API.</p>
+<p>Only links in the current host without the target attribute or with the target attribute set to <code>_self</code> are intercepted.</p>
+<h3 id="how-to-disable-interception">How to disable interception</h3>
+<p>Sometimes, you need to disable interception even for links within the application. And as mentioned above, if you set the target attribute to anything else than <code>_self</code>, the navigation from that anchor will not be intercepted.</p>
+<p>Example:</p>
+<pre><code class="html">&lt;a href=&quot;internalLink.html&quot; target=&quot;_top&quot;&gt;Go to internal link&lt;/a&gt;
+</code></pre>
+
+<p>... even if <code>internalLink.html</code> is part of your application, PalindromDOM will not intercept the navigation and the browser will issue a full HTTP request to <code>internalLink.html</code>.</p>
+<p>As the value of the <code>target</code> attribute, you might consider one of the following keywords that have a special meaning in HTML:</p>
+<ul>
+<li><code>_top</code> - load the URL into the current browser tab or window</li>
+<li><code>_blank</code> - load the URL into a new browser tab or window</li>
+</ul>
+<p>You can find more information on the <code>target</code> attribute at <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a">MDN</a>.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../06-_Dependencies/" class="btn btn-neutral float-right" title="06  Dependencies">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../04-_PalindromDOM/" class="btn btn-neutral" title="PalindromDOM"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/Palindrom/Palindrom/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../04-_PalindromDOM/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../06-_Dependencies/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/require.js"></script>
+      <script src="../search/search.js"></script>
+
+</body>
+</html>
