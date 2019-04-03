@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Filtering and ignoring changes - Palindrom Docs</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  <link href="../css/custom_style.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Filtering and ignoring changes";
+    var mkdocs_page_input_path = "03-_Filtering_and_ignoring_changes.md";
+    var mkdocs_page_url = "/03-_Filtering_and_ignoring_changes/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Palindrom Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Intro</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../01-_Installation/">Installation</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../02-_Palindrom/">Palindrom</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Filtering and ignoring changes</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#filtering-and-ignoring-changes">Filtering and ignoring changes</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#1-by-defining-non-enumerable-properties-recommended">1. By defining non-enumerable properties (recommended):</a></li>
+        
+            <li><a class="toctree-l3" href="#2-by-extending-palindromfilterlocalchange">2. By extending Palindrom#filterLocalChange</a></li>
+        
+            <li><a class="toctree-l3" href="#example_1">Example</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../04-_PalindromDOM/">04  PalindromDOM</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../05-_Navigation_Interception/">05  Navigation Interception</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../06-_Dependencies/">06  Dependencies</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../07-_Numbers/">07  Numbers</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../08-_Development/">08  Development</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../09-_Changelog/">09  Changelog</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Palindrom Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Filtering and ignoring changes</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/Palindrom/Palindrom/tree/master/docs/03-_Filtering_and_ignoring_changes.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="filtering-and-ignoring-changes">Filtering and ignoring changes</h1>
+<p>Palindrom deeply observes changes made to the <code>palindrom.obj</code> object and converts them to patches. If you have a need to ignore some kind of changes, there are two ways to do it. Either make the changes in non-enumerable property or use a filtering function to ignore changes made in the enumerable properties.</p>
+<h3 id="1-by-defining-non-enumerable-properties-recommended">1. By defining non-enumerable properties <em>(recommended)</em>:</h3>
+<p>Palindrom only generates patches for the enumerable properties of <code>palindrom.obj</code> and its subtrees. To create a part of the tree that is invisible for Palindrom's patch collection, define a non-enumerable property.</p>
+<p>Assuming your Palindrom instance is instantiated and your <code>palindrom.obj</code> is ready, you can create a non-enumerable object child in <code>palindrom.obj</code> and use it as a local non-observed store for your needs.</p>
+<h4 id="example">Example:</h4>
+<pre><code class="js">Object.defineProperty(palindrom.obj, &quot;myLocalNonSyncedObject&quot;, {
+    enumerable: false,
+    value: {}
+});
+</code></pre>
+
+<p>Now <code>palindrom.obj.myLocalNonSyncedObject</code> is an object this is not observed for patch generation. This is ideal for keeping client-side related information (eg: div height, or something like <code>isModalWarningDisplayed = true</code>).</p>
+<p>Example:</p>
+<pre><code class="js">palindrom.obj.myLocalNonSyncedObject.divHeight = 50;
+</code></pre>
+
+<p>... does not generate a patch.</p>
+<p><strong>Note:  In most cases, the added property is recommended to be an object.</strong>*</p>
+<p><em>*Note: You should not replace the value of the non-enumerable property after it has been defined. Otherwise Palindrom will still detect the change. If you want to modify the unobserved values, you should declare the non-enumerable property as an object and only modify its children.</em></p>
+<h3 id="2-by-extending-palindromfilterlocalchange">2. By extending <code>Palindrom#filterLocalChange</code></h3>
+<p>You can discard a generated patch by extending <code>Palindrom.filterLocalChange</code> function. This function accepts a JSON Patch operation and either returns it or returns a falsy value. Returning a falsy value results in ignoring this operation.</p>
+<h3 id="example_1">Example</h3>
+<pre><code class="js">const palindrom = new Palindrom({ remoteUrl: window.location.href });
+
+var old = palindrom.filterLocalChange;
+palindrom.filterLocalChange = function(operation) {
+    operation = old.call(palindrom, operation); //make sure you don't overwrite other filters
+    if (operation &amp;&amp; !operation.path.startsWith('$')) {
+        return operation;
+    }
+}
+// use palindrom.obj
+palindrom.obj.$someProperty = 'new value'; // this change will be ignored and will not reach the server
+</code></pre>
+
+<p>You can also pass <code>filterLocalChange</code> to Palindrom constructor as in:</p>
+<pre><code class="js">const palindrom = new Palindrom({ remoteUrl: window.location.href, filterLocalChange: op =&gt; !op.path.startsWith('$') &amp;&amp; op });
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../04-_PalindromDOM/" class="btn btn-neutral float-right" title="04  PalindromDOM">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../02-_Palindrom/" class="btn btn-neutral" title="Palindrom"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/Palindrom/Palindrom/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../02-_Palindrom/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../04-_PalindromDOM/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/require.js"></script>
+      <script src="../search/search.js"></script>
+
+</body>
+</html>
