@@ -28,7 +28,7 @@ To have a website that is on `org.github.io` and not `org.github.io/websites-rep
 
 No production-related reason. But the development cycle is a big time savor.
 
-# Documentaion
+# Documentation
 
 After you update the docs in Palindrom repository, you'll have to update `palindrom.github.io`. To do this, you'll need:
 
