@@ -5,44 +5,33 @@
   <meta charset="utf-8">
   <title>Palindrom with Polymer demo</title>
   <!-- include web components polyfill -->
-  <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
-
-  <!-- this is only needed for the fake ajax, not a Palinrom dep -->
-  <script src="https://rawgit.com/Starcounter-Jack/JSON-Patch/master/dist/fast-json-patch.min.js"></script>
-
-  <!-- include Palindrom with dependencies -->
-  <script src="https://rawgit.com/Palindrom/Palindrom/master/dist/palindrom-dom.js"></script>
+  <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
 
   <!-- include components for demo -->
   <link rel="import" href="bower_components/polymer/polymer.html">
+  <link rel="import" href="bower_components/palindrom-bunny/palindrom-bunny.html">
+
+  <!-- include Palindrom with dependencies -->
+  <link rel="import" href="bower_components/palindrom-client/palindrom-client.html">
 
   <!-- include polyfills -->
-  <script src="polyfills/object-observe.js"></script>
-  <script src="polyfills/array-observe.js"></script>
-  <link rel="import" href="bower_components/dom-bind-notifier/dom-bind-notifier.html">
   <link rel="import" href="components/my-menu-button.html">
-  <link rel="import" href="bower_components/palindrom-bunny/palindrom-bunny.html">
 
   <link rel="stylesheet" type="text/css" href="css/style.css">
 
   <!-- mock server responses -->
-  <script src="../utils/lib/jasmine-2.2.0/jasmine.js"></script>
-  <script>
-    window.jasmine = jasmineRequire.core(jasmineRequire);
-  </script>
-  <script src="../utils/lib/jasmine-ajax-3.0.0/lib/mock-ajax.js"></script>
-  <script src="js/mockServer.js"></script>
+  <script src="../mock-server/dist/mock-server.js"></script>
 </head>
 
 <body>
 
   <div id="brand">
-        <div class="float"><img alt="Palindrom + Polymer" title="Palindrom and Vue logos" src="css/logo.png"></div>
+        <div class="float"><img alt="Palindrom + Polymer" title="Palindrom and Polymer logos" src="css/logo.png"></div>
         <div class="float"><h1> Palindrom + Polymer</h1></div>
         <div style="clear: both"></div>
   </div>
 
-  <p>This demo shows usage with Polymer's TemplateBinding outside and inside of Polymer Element</p>
+  <p>This demo shows usage with Polymer's template binding outside and inside of Polymer Element</p>
 
   <article id="listeningScope">
     <section>
@@ -69,7 +58,7 @@
         Capturing input
       </h2>
 
-      <template id="test" is="dom-bind">
+      <dom-bind id="test"><template>
         <h4>Welcome
           <em>{{model.user.fullName}}</em>!</h4>
 
@@ -88,8 +77,7 @@
         <button value="{{model.user.resetNameClicked$::click}}" onclick="this.value = true">Replace with Newton!
         </button>
         <!-- make dom-bind observe changes to the object -->
-        <dom-bind-notifier observed-object="{{model}}" path="model" deep></dom-bind-notifier>
-      </template>
+      </template></dom-bind>
     </section>
 
     <!--<section>
@@ -97,26 +85,17 @@
     <pre>Patches go here</pre>
   </section>-->
   </article>
-  <p>You can find more fancy Polymer bindings in <a href="../polymer_fancy_binding/">here</a></p>
-
-
-  <script>
-    // it's global just for debugging
-    var palindrom = new PalindromDOM({
-      remoteUrl: window.location.href,
-      onStateReset: function(obj) {        
-        document.getElementById('test').model = obj;
-      },
-      debug: false,
-      listenTo: document.getElementById("listeningScope"),
-      onRemoteChange: function(e) {
-        console.log(e)
-      }
-    });
-
-  </script>
-
+  <p>You can find more fancy Polymer bindings in <a href="../polymer_fancy_binding/" target="_top">here</a></p>
+  
   <palindrom-bunny></palindrom-bunny>
+
+  <!--
+    The following attributes are only added for the convenience of this demo's mock server
+    use-web-socket="false" ot="false" local-version-path="" remote-version-path=""
+
+    In real world set up, you would normally use WebSocket and OT.
+  -->
+  <palindrom-client ref="test" use-web-socket="false" ot="false" local-version-path="" remote-version-path=""></palindrom-client>
 
   <footer>Palindrom photo credit: <a href="https://www.flickr.com/photos/mujitra/4422575066">MIKI Yoshihito</a> (CC BY 2.0)
   </footer>

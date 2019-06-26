@@ -6,7 +6,8 @@ and transforms them into PATCH request
 <link rel="import" href="../bower_components/polymer/polymer.html">
 
 <dom-module id="my-menu-button">
-  <style>
+  <template>
+    <style>
       a {
         background: aliceblue;
         border-radius: 3px;
@@ -16,7 +17,6 @@ and transforms them into PATCH request
         border: 1px solid lightsteelblue;
       }
     </style>
-  <template>
     <a href$="{{href}}">ShadowDOM: <content></content></a>
   </template>
   <script>
