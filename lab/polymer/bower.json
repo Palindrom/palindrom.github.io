@@ -1,0 +1,22 @@
+{
+  "name": "lab-polymer",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Marcin Warpechowski <warpech@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/Palindrom/palindrom.github.io",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "palindrom-client": "Palindrom/palindrom-client#^7.3.0",
+    "polymer": "Polymer/polymer#^2.0.0",
+    "palindrom-bunny": "Palindrom/palindrom-bunny#^3.0.0"
+  }
+}

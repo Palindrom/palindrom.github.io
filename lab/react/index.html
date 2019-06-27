@@ -5,22 +5,14 @@
     <meta charset="utf-8">
     <title>Palindrom + React</title>
     <link rel="stylesheet" href="css/style.css">
-    <script src="https://rawgit.com/Palindrom/Palindrom/master/dist/palindrom-dom.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react-dom.js"></script>
+    <script src="../polymer/bower_components/Palindrom/dist/palindrom-dom.min.js"></script>
+    <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
-    <!-- this is only needed for the fake ajax, not a Palinrom dep -->
-    <script src="https://rawgit.com/Starcounter-Jack/JSON-Patch/master/dist/fast-json-patch.min.js"></script>
-
     <!-- mock server responses -->
-    <script src="../utils/lib/jasmine-2.2.0/jasmine.js"></script>
-    <script>
-        window.jasmine = jasmineRequire.core(jasmineRequire);
-    </script>
-    <link rel="import" href="components/my-menu-button.html">
-    <script src="../utils/lib/jasmine-ajax-3.0.0/lib/mock-ajax.js"></script>
-    <script src="js/mockServer.js"></script>
+    <script src="../mock-server/dist/mock-server.js"></script>
+    <link rel="import" href="../polymer/bower_components/palindrom-bunny/palindrom-bunny.html">
 </head>
 
 <body>
@@ -41,51 +33,74 @@
                 Capturing Links
             </h2>
 
-            <p>Clicking one of the links contained in a Polymer Element (or in regular DOM, doesn't matter) actually sends a
-                PATCH </p>
+            <p>Clicking one of the links actually sends a PATCH</p>
             <ul>
                 <li>
                     <a href="index.html">Albert <strong>Einstein</strong></a> (index.html)
                 </li>
                 <li>
-                    <my-menu-button href="subpage.html">Nikola
-                        <strong>Tesla</strong>
-                    </my-menu-button>
-                    (subpage.html)
+                    <a href="subpage.html">Nikola <strong>Tesla</strong></a> (subpage.html)
                 </li>
             </ul>
         </section>
         <section id="app">
         </section>
     </article>
+    <palindrom-bunny></palindrom-bunny>
     <script type="text/babel">
-        var palindrom = new PalindromDOM({ remoteUrl: window.location.href, onStateReset: function (obj) { class MyComponent extends
-        React.Component { constructor() { super(); this.state = { ...palindrom.obj }; palindrom.onRemoteChange = this.remoteUpdateHappened.bind(this);
-        } remoteUpdateHappened() { this.updating = true; this.setState({...palindrom.obj}, () => this.updating = false);
-        } componentDidUpdate() { if(!this.updating) Object.assign(palindrom.obj.user, this.state.user); } render() { const
-        section =
-        <section>
-            <h2>
-                Capturing input
-            </h2>
-            <div>
-                <h4>Welcome <em>{this.state.user.fullName}</em>!
-                </h4>
-                <p>
-                    <label>First Name: </label>
-                    <input type="text" onChange={(ev)=> {this.setState({user: {...this.state.user, firstName$: ev.target.value}})}}
-                    value={this.state.user.firstName$} />
-                </p>
+const palindrom = new PalindromDOM({
+    remoteUrl: window.location.href, 
+    onStateReset: function (obj) {
+        class MyComponent extends
+            React.Component {
+                constructor() {
+                    super();
+                    this.state = {...palindrom.obj.user};
+                    palindrom.onRemoteChange = this.remoteUpdateHappened.bind(this);
+                } 
+                
+                remoteUpdateHappened() {
+                    this.setState ({...palindrom.obj.user});
+                }
 
-                <p>
-                    <label>Last Name: </label>
-                    <input type="text" onChange={(ev)=> {this.setState({user: {...this.state.user, lastName$: ev.target.value}})}}
-                    value={this.state.user.lastName$} />
-                </p>
-                <button onClick={()=> {obj.user.resetNameClicked$ = true}}>Replace with Newton!</button>
-            </div>
-        </section>; return section; } } ReactDOM.render(
-        <MyComponent />, document.getElementById('app') ); }, listenTo: document.getElementById('listeningScope'), debug: false });
+                componentDidUpdate() {
+                    Object.keys(this.state).forEach(key => {
+                        if (palindrom.obj.user[key] != this.state[key]) {
+                            palindrom.obj.user[key] = this.state[key];
+                        }
+                    });
+                }
+                    
+                render() {
+                    return <section>
+                            <h2>Capturing input</h2>
+                            <div>
+                                <h4>Welcome <em>{this.state.fullName}</em>!</h4>
+                                <p>
+                                    <label>First Name: </label>
+                                    <input type="text" onChange={ev => this.setState({firstName$: ev.target.value})}
+                                        value={this.state.firstName$} />
+                                </p>
+                                <p>
+                                    <label>Last Name: </label>
+                                    <input type="text" onChange={ev => this.setState({lastName$: ev.target.value})}
+                                        value={this.state.lastName$} />
+                                </p>
+                                <button onClick={en => this.setState({resetNameClicked$: true})}>Replace with Newton!</button>
+                            </div>
+                        </section>;
+                }
+        } 
+        
+        ReactDOM.render(<MyComponent />, document.getElementById('app'));
+    }, 
+    listenTo: document.getElementById('listeningScope'), 
+    debug: false,
+    localVersionPath: '/_ver#c$',
+    remoteVersionPath: '/_ver#s',
+    ot: true,
+    useWebSocket: false
+});
     </script>
 </body>
 
