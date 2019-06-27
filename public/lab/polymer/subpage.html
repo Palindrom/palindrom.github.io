@@ -9,7 +9,7 @@
 
   <!-- include components for demo -->
   <link rel="import" href="bower_components/polymer/polymer.html">
-  <link rel="import" href="bower_components/palindrom-bunny/palindrom-bunny.html">
+  <script type="module" src="bower_components/palindrom-bunny/palindrom-bunny.js"></script>
 
   <!-- include Palindrom with dependencies -->
   <link rel="import" href="bower_components/palindrom-client/palindrom-client.html">
@@ -85,9 +85,10 @@
     <pre>Patches go here</pre>
   </section>-->
   </article>
-  <p>You can find more fancy Polymer bindings in <a href="../polymer_fancy_binding/" target="_top">here</a></p>
   
-  <palindrom-bunny></palindrom-bunny>
+  <palindrom-bunny style="width: calc(100vw - 150px); left: 75px; bottom: 0; position: fixed">
+      <img src="bower_components/palindrom-bunny/src/puppet.png" style="width: 107px; height: 145px; margin-left: -53px;">
+  </palindrom-bunny>
 
   <!--
     The following attributes are only added for the convenience of this demo's mock server
