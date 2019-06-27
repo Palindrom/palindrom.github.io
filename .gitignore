@@ -1,4 +1,4 @@
-# See https://help.github.com/ignore-files/ for more about ignoring files.
+# This file will be copied to `master` branch
 
 # dependencies
 node_modules
