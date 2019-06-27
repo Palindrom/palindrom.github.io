@@ -49,7 +49,7 @@ fetchMock.mock('*', (url, req) => {
         let patch = [];
         const incomingPatch = req.body ? JSON.parse(req.body) : [];
         if (incomingPatch.length) {
-            if (incomingPatch[1].op !== 'test') {
+            if (!incomingPatch[1] || incomingPatch[1].op !== 'test') {
                 throw new Error("The client does not seem to implement OT");
             }
             incomingPatch.forEach(operation => {
@@ -72,8 +72,8 @@ fetchMock.mock('*', (url, req) => {
                         patch.push(...generateReplaceOperation(obj.user, '/user/resetNameClicked$', '/user/firstName$', '/user/lastName$', '/user/fullName'));
                     }
                     else {
-                        console.log("Unrecognized patch", operation);
-                        throw new Error("Unrecognized patch");
+                        console.error("Unexpected patch", operation);
+                        throw new Error("Unexpected patch");
                     }
                 };
             });

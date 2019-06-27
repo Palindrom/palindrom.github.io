@@ -6,8 +6,9 @@
     <title>Palindrom + Vue</title>
     <link rel="stylesheet" href="css/style.css">
 
-    <script src="https://rawgit.com/Palindrom/Palindrom/master/dist/palindrom-dom.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.2/vue.min.js"></script>
+    <script src="../polymer/bower_components/Palindrom/dist/palindrom-dom.min.js"></script>
+    <script src="https://unpkg.com/vue@2/dist/vue.min.js"></script>
+    
     <!-- mock server responses -->
     <script src="../mock-server/dist/mock-server.js"></script>
     <link rel="import" href="../polymer/bower_components/palindrom-bunny/palindrom-bunny.html">
@@ -31,9 +32,7 @@
                 Capturing Links
             </h2>
 
-            <p>Clicking one of the links contained in a Polymer Element (or in regular DOM, doesn't matter) actually sends a
-                PATCH
-            </p>
+            <p>Clicking one of the links actually sends a PATCH</p>
             <ul>
                 <li>
                     <a href="index.html">Albert <strong>Einstein</strong></a> (index.html)
