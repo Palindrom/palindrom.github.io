@@ -14,8 +14,7 @@
     <script src="../mock-server/dist/mock-server.js"></script>
   
     <!-- include components for demo -->
-    <script src="../polymer/bower_components/webcomponentsjs/webcomponents-lite.js"></script>
-    <link rel="import" href="../polymer/bower_components/palindrom-bunny/palindrom-bunny.html">
+    <script type="module" src="../polymer/bower_components/palindrom-bunny/palindrom-bunny.js"></script>
 </head>
 
 <body>
@@ -49,7 +48,9 @@
         <section id="app">
         </section>
     </article>
-    <palindrom-bunny></palindrom-bunny>
+    <palindrom-bunny style="width: calc(100vw - 150px); left: 75px; bottom: 0; position: fixed">
+        <img src="../polymer/bower_components/palindrom-bunny/src/puppet.png" style="width: 107px; height: 145px; margin-left: -53px;">
+    </palindrom-bunny>
     <script type="text/babel">
 const palindrom = new PalindromDOM({
     remoteUrl: window.location.href, 
