@@ -1,38 +1,41 @@
 // palindrom-bunny v3.0.0 | MIT License
+const jumps = 10;
+
+const stageAnimation = Array(jumps).fill(true).map((_, i) => {
+    let jumpStart;
+    let jumpEnd;
+
+    if (i < jumps/2) {
+        jumpStart = `translateX(${2*100*i/jumps}%)`;
+        jumpEnd = `translateX(${2*100*(i+1)/jumps}%)`;
+    }
+    else {
+        const j = i - jumps/2;
+        jumpStart = `translateX(-${2*100*(j/jumps)}%) rotateY(180deg)`;
+        jumpEnd = `translateX(-${2*100*((j+1)/jumps)}%) rotateY(180deg)`;
+    }
+
+    let css = `
+        ${(0 + 100*i + 0.01*i)/jumps}%   { transform: translateZ(0) ${jumpStart}; }
+        ${(10 + 100*i)/jumps}%  { transform: translateZ(0) ${jumpStart}; }
+        ${(50 + 100*i)/jumps}%  { transform: translateZ(0) ${jumpEnd}; }
+        ${(100 + 100*i)/jumps}% { transform: translateZ(0) ${jumpEnd}; }
+        `;
+        return css;
+}).join("\n");
+
 let tmpl = document.createElement('template');
-tmpl.innerHTML = `
+tmpl.innerHTML = /*html*/`
     <style>
         #stage {
             width: 100%;
-            animation: stage 20s step-end;
-            animation-iteration-count: infinite;
-        }
-
-        @keyframes stage {
-            0%  { transform: translateZ(0) translateX(0); }
-            10% { transform: translateZ(0) translateX(20%); }
-            20% { transform: translateZ(0) translateX(40%); }
-            30% { transform: translateZ(0) translateX(60%); }
-            40% { transform: translateZ(0) translateX(80%); }
-            50% { transform: translateZ(0) translateX(0)    rotateY(180deg); }
-            60% { transform: translateZ(0) translateX(-20%) rotateY(180deg); }
-            70% { transform: translateZ(0) translateX(-40%) rotateY(180deg); }
-            80% { transform: translateZ(0) translateX(-60%) rotateY(180deg); }
-            90% { transform: translateZ(0) translateX(-80%) rotateY(180deg); }
-        }
-
-        #jump {
-            width: 20%;
-            animation: jump 2s;
+            animation: stage 20s;
             animation-timing-function: cubic-bezier(0.280, 0.840, 0.420, 1);
             animation-iteration-count: infinite;
         }
 
-        @keyframes jump {
-            0%   { transform: translateZ(0) translateX(0); }
-            10%  { transform: translateZ(0) translateX(0); }
-            50%  { transform: translateZ(0) translateX(100%); }
-            100% { transform: translateZ(0) translateX(100%); }
+        @keyframes stage {
+            ${stageAnimation}
         }
 
         #bunny {
@@ -55,10 +58,8 @@ tmpl.innerHTML = `
     </style>
     <div id="stage">
         <div id="rotate">
-            <div id="jump">
-                <div id="bunny">
-                    <slot></slot>
-                </div>
+            <div id="bunny">
+                <slot></slot>
             </div>
         </div>
     </div>`;
