@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>Palindrom + Vue</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="../assets/style.css">
 
     <script src="../polymer/bower_components/Palindrom/dist/palindrom-dom.min.js"></script>
     <script src="https://unpkg.com/vue@2/dist/vue.min.js"></script>
@@ -70,9 +70,11 @@
                 </div>
             </section>
     </article>
-    <palindrom-bunny style="width: calc(100vw - 150px); left: 75px; bottom: 0; position: fixed">
-        <img src="../polymer/bower_components/palindrom-bunny/src/puppet.png" style="width: 107px; height: 145px; margin-left: -53px;">
+    <palindrom-bunny class="bunny-animation">
+        <img src="../polymer/bower_components/palindrom-bunny/src/puppet.png">
     </palindrom-bunny>
+    <footer>Bunny photo credit: <a href="https://www.flickr.com/photos/mujitra/4422575066">MIKI Yoshihito</a> (CC BY 2.0)
+    </footer>
     <script>
         var palindrom = new PalindromDOM({
             remoteUrl: window.location.href,
