@@ -17,7 +17,7 @@
   <!-- include polyfills -->
   <link rel="import" href="components/my-menu-button.html">
 
-  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="../assets/style.css">
 
   <!-- mock server responses -->
   <script src="../mock-server/dist/mock-server.js"></script>
@@ -86,8 +86,8 @@
   </section>-->
   </article>
   
-  <palindrom-bunny style="width: calc(100vw - 150px); left: 75px; bottom: 0; position: fixed">
-      <img src="bower_components/palindrom-bunny/src/puppet.png" style="width: 107px; height: 145px; margin-left: -53px;">
+  <palindrom-bunny class="bunny-animation">
+      <img src="bower_components/palindrom-bunny/src/puppet.png">
   </palindrom-bunny>
 
   <!--
@@ -98,7 +98,7 @@
   -->
   <palindrom-client ref="test" use-web-socket="false"></palindrom-client>
 
-  <footer>Palindrom photo credit: <a href="https://www.flickr.com/photos/mujitra/4422575066">MIKI Yoshihito</a> (CC BY 2.0)
+  <footer>Bunny photo credit: <a href="https://www.flickr.com/photos/mujitra/4422575066">MIKI Yoshihito</a> (CC BY 2.0)
   </footer>
 
 </body>

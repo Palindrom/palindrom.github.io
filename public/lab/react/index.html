@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>Palindrom + React</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="../assets/style.css">
     <script src="../polymer/bower_components/Palindrom/dist/palindrom-dom.min.js"></script>
     <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
@@ -48,9 +48,11 @@
         <section id="app">
         </section>
     </article>
-    <palindrom-bunny style="width: calc(100vw - 150px); left: 75px; bottom: 0; position: fixed">
-        <img src="../polymer/bower_components/palindrom-bunny/src/puppet.png" style="width: 107px; height: 145px; margin-left: -53px;">
+    <palindrom-bunny class="bunny-animation">
+        <img src="../polymer/bower_components/palindrom-bunny/src/puppet.png">
     </palindrom-bunny>
+    <footer>Bunny photo credit: <a href="https://www.flickr.com/photos/mujitra/4422575066">MIKI Yoshihito</a> (CC BY 2.0)
+    </footer>
     <script type="text/babel">
 const palindrom = new PalindromDOM({
     remoteUrl: window.location.href, 
