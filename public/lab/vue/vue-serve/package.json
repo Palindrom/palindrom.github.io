@@ -1,0 +1,16 @@
+{
+  "name": "vue-serve",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "fetch-mock": "^7.3.6",
+    "palindrom": "github:palindrom/palindrom#master"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
