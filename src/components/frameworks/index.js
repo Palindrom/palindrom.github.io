@@ -31,7 +31,7 @@ class Frameworks extends Component {
             rel="noopener noreferrer"
           >
             <div>
-              <img alt="Vue Logo" src={ReactLogo} />
+              <img alt="React Logo" src={ReactLogo} />
             </div>
             <hr />
             <div>
@@ -41,12 +41,12 @@ class Frameworks extends Component {
         </div>
         <div className="framework">
           <a
-            href="lab/vue/index.html"
+            href="lab/vue/dist/index.html"
             target="_blank"
             rel="noopener noreferrer"
           >
             <div>
-              <img alt="React Logo" src={VueLogo} />
+              <img alt="Vue Logo" src={VueLogo} />
             </div>
             <hr />
             <div>

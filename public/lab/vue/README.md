@@ -2,7 +2,7 @@
 
 ## Live demo
 
-The live demo is located at https://palindrom.github.io/lab/vue/dist/index.html
+The live demo is located at [https://palindrom.github.io/lab/vue/dist/index.html]
 
 ## What is it
 
@@ -10,7 +10,7 @@ It is a simple demo of how to connect to Palindrom using a new project started w
 
 How this demo was created:
 
-1. Instal Vue CLI as explained in https://cli.vuejs.org/guide/installation.html
+1. Instal Vue CLI as explained in [https://cli.vuejs.org/guide/installation.html].
 2. Create a new folder for the demo: `mkdir vue && cd vue`
 3. Initialize a new Vue project with Vue CLI: `vue create .`. This creates `package.json`, installs all NPM dependencies and configures Babel.
 4. Call `npm run serve` and go to the URL provided by Vue CLI to verify that it works
