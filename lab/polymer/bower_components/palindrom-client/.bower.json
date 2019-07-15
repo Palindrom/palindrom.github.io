@@ -46,14 +46,14 @@
     "starcounter-include": "Starcounter/starcounter-include#master",
     "fast-json-patch": "^2.0.6"
   },
-  "version": "7.3.0",
-  "_release": "7.3.0",
+  "version": "8.0.0",
+  "_release": "8.0.0",
   "_resolution": {
     "type": "version",
-    "tag": "7.3.0",
-    "commit": "70a1a2a363bd951c3873ad33373b0ad6c9458303"
+    "tag": "8.0.0",
+    "commit": "01e38d61f0915c2e64900d9d11ddc97839d9e816"
   },
   "_source": "https://github.com/Palindrom/palindrom-client.git",
-  "_target": "^7.3.0",
+  "_target": "^8.0.0",
   "_originalSource": "Palindrom/palindrom-client"
 }
