@@ -16,10 +16,10 @@ To have a website that is on `org.github.io` and not `org.github.io/websites-rep
 
 1. Clone this repo.
 2. Run `npm install` to install the deps.
-3. Run `npm start`.
+3. Run `npm run start`.
 4. Navigate to `localhost:3000` (probably, `npm start` will do that automatically for you).
 5. Hack what you need to hack.
-6. Run `npm build`.
+6. Run `npm run build`.
 7. Commit your changes to a feature branch if needed, or to `source` branch directly if not.
 8. Run `npm run deploy`.
 9. NOTICE: step 8 actually publishes the website to the wild. Deploy with a little caution.
@@ -34,7 +34,7 @@ After you update the docs in Palindrom repository, you'll have to update `palind
 
 1. Install [Python](https://www.python.org/downloads/).
 2. Install MkDocs (in short run `python -m pip install mkdocs`);
-3. In root dir, in your shell, execute `./fetchandbuild.sh`. 
+3. In root dir, in your shell, execute `./fetchandbuild.sh`.
 
 Now the docs are built.
 
@@ -45,5 +45,5 @@ Now the docs are built.
 
 Done!
 
-## License 
+## License
 MIT
