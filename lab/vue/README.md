@@ -1,5 +1,13 @@
 # vue
 
+## Live demo
+
+The live demo is located at https://palindrom.github.io/lab/vue/dist/index.html
+
+## What is it
+
+It is a simple demo of how to connect to Palindrom using a new project started with Vue CLI.
+
 How this demo was created:
 
 1. Instal Vue CLI as explained in https://cli.vuejs.org/guide/installation.html
