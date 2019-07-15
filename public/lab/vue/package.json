@@ -7,8 +7,13 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
+  "commentRegardingDependencies": {
+    "fetch-mock": "only needed if 'mock-sever' is used in App.vue"
+  },
   "dependencies": {
     "core-js": "^2.6.5",
+    "fetch-mock": "^7.3.6",
+    "palindrom": "github:palindrom/palindrom#master",
     "vue": "^2.6.10"
   },
   "devDependencies": {

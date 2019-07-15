@@ -6,7 +6,8 @@ How this demo was created:
 2. Create a new folder for the demo: `mkdir vue && cd vue`
 3. Initialize a new Vue project with Vue CLI: `vue create .`. This creates `package.json`, installs all NPM dependencies and configures Babel.
 4. Call `npm run serve` and go to the URL provided by Vue CLI to verify that it works
-5. Call `npm run build` to create a production build. This creates the `dist/` subfolder that can be commited to Git in order to deploy the demo on GitHub Pages.
+5. Replace the content of the `App.vue` and `HelloWorld.vue` components with the code of the Palindrom demo. See the  comments in the annotated source code for details.
+6. Call `npm run build` to create a production build. This creates the `dist/` subfolder that can be commited to Git in order to deploy the demo on GitHub Pages.
 
 ## Project setup
 ```
