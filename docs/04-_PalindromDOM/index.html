@@ -84,7 +84,7 @@
         
             <li><a class="toctree-l3" href="#options-palindromdom-constructor-parameters">Options (PalindromDOM() constructor parameters)</a></li>
         
-            <li><a class="toctree-l3" href="#browser-history">Browser history</a></li>
+            <li><a class="toctree-l3" href="#morphing-pages-programmatically">Morphing pages programmatically</a></li>
         
         </ul>
     
@@ -153,12 +153,10 @@
             <div class="section">
               
                 <h1 id="palindromdom">PalindromDOM</h1>
-<blockquote>
-<p>Extension to Palindrom that adds DOM into two-way data binding chain (DOM ↔ local JSON ↔ remote JSON). Client side library that binds data on DOM level, so it integrates nicely with good old JavaScript, WebComponents, or Angular.</p>
-</blockquote>
-<p>Implements <a href="https://github.com/Starcounter-Jack/Palindrom/wiki/Server-communication">Server communication</a>.</p>
+<p>Extension to Palindrom that adds navigation interception. This allows to have links on the HTML page that send and receive patches instead of full page reloads. The navigation appears to be full for the end user, thanks to the use of History API to update the URL in the browser address bar. More details about this feature on the next page: <a href="../05-_Navigation_Interception/">Navigation interception</a>.</p>
+<p>PalindromDOM is used in scenarios when the Palindrom instance is a client that runs in a Web browser and the HTML document contains links, which should be intercepted and sent to the server as patches.</p>
 <h3 id="usage">Usage</h3>
-<p>After DOM is ready, initialize with the constructor:</p>
+<p>After DOM is ready, initialize the <code>PalindromDOM</code> constructor instead of <code>Palindrom</code> constructor:</p>
 <pre><code class="js">/**
  * Defines a connection to a remote PATCH server, gives an object that is persistent between browser and server
  */
@@ -172,9 +170,9 @@ const palindrom = new PalindromDOM({remoteUrl: window.location.href});
 <p>Now any changes to <code>palindrom.obj</code> will trigger a HTTP PATCH request. And any received will be applied.</p>
 <h3 id="demo">Demo</h3>
 <ul>
-<li><a href="http://Palindrom.github.io/lab/polymer/index.html">Example with Polymer's Template Binding and Web Components</a></li>
-<li><a href="http://Palindrom.github.io/lab/vue/index.html">Example with Vue</a></li>
-<li><a href="http://Palindrom.github.io/lab/react/index.html">Example with React</a></li>
+<li><a href="http://palindrom.github.io/lab/polymer/index.html">Example with Polymer's Template Binding and Web Components</a></li>
+<li><a href="http://palindrom.github.io/lab/vue/dist/index.html">Example with Vue</a></li>
+<li><a href="http://palindrom.github.io/lab/react/index.html">Example with React</a></li>
 </ul>
 <h3 id="options-palindromdom-constructor-parameters">Options (<code>PalindromDOM()</code> constructor parameters)</h3>
 <p>PalindromDOM accepts the same option attributes as Palindrom, plus the ones listed below. All the parameters are optional.</p>
@@ -195,7 +193,7 @@ const palindrom = new PalindromDOM({remoteUrl: window.location.href});
 <td><code>listenTo</code></td>
 <td><em>HTMLElement</em></td>
 <td><code>document</code></td>
-<td>DOM node, that indicates a root of subtree to listen to events.</td>
+<td>DOM node, that indicates a root of subtree to listen to DOM events.</td>
 </tr>
 </tbody>
 </table>
@@ -218,13 +216,13 @@ const palindrom = new PalindromDOM({remoteUrl: window.location.href});
 <td><code>element</code></td>
 <td><em>HTMLElement</em></td>
 <td><code>document</code></td>
-<td>See <code>listenTo</code> above</td>
+<td>The element on which PalindromDOM is listening to DOM events (document or the the element passed using the <code>listenTo</code> option)</td>
 </tr>
 <tr>
 <td><code>listening</code></td>
 <td><em>Boolean</em></td>
 <td><code>true</code></td>
-<td>Is listening on</td>
+<td>True if DOM event listening is on</td>
 </tr>
 </tbody>
 </table>
@@ -263,34 +261,19 @@ const palindrom = new PalindromDOM({remoteUrl: window.location.href});
 </tr>
 </tbody>
 </table>
-<h3 id="browser-history">Browser history</h3>
-<p>Palindrom uses the HTML5 history API to update the URL in the browser address bar to reflect the new page. It also listens to a <code>popstate</code> event so it could ask the server for new JSON-Patch to morph the page back to previous state. Due to lack of native <code>pushstate</code> event you need to either:</p>
+<h3 id="morphing-pages-programmatically">Morphing pages programmatically</h3>
+<p>PalindromDOM uses the HTML5 history API to update the URL in the browser address bar to reflect the new page. It also listens to a <code>popstate</code> event so it could ask the server for new JSON-Patch to morph the page back to previous state.</p>
+<p>To morph to a page programmatically, you need to either:</p>
+<p>If you don't have a reference to the PalindromDOM instance:</p>
 <ul>
-<li>call <code>palindrom.getPatchUsingHTTP(url)</code> after your <code>history.pushState(url)</code>. This method returns a <a href="https://github.com/axios/axios#response-schema"><code>Promise&lt;Response&gt;</code></a>. This methods throws an error if the HTTP request has failed or the <code>palindrom-before-redirect</code> was canceled by calling <code>event.preventDefault()</code>.</li>
-<li>call <code>palindrom.morphUrl(url)</code> - this will call <code>pushState</code> and update PalindromDOM's state for you,</li>
-<li>trigger <code>palindrom-redirect-pushstate</code> with <code>{url: "/new/url"}</code> on <code>window</code>. This will call <code>morphUrl</code> for you,</li>
+<li>trigger <code>palindrom-morph-url</code> or <code>palindrom-redirect-pushstate</code> event with <code>{url: "/new/url"}</code> on <code>palindrom.element</code> (equals <code>document</code> by default). This will call <code>morphUrl</code> for you. Example: <code>document.dispatchEvent(new CustomEvent('palindrom-morph-url', {detail: {url: yourURL}}))</code>,</li>
 <li>or use <a href="https://github.com/Palindrom/palindrom-redirect"><code>&lt;palindrom-redirect&gt;</code></a> Custom Element that does it for you.</li>
 </ul>
-<h4 id="browser-history-events">Browser history events</h4>
-<p>PalindromDOM dispatches bubbling events before and after it manipulates browser history.</p>
+<p>If you have a reference to the PalindromDOM instance:</p>
 <ul>
-<li>Before: it dispatches <code>palindrom-before-redirect</code> event with <code>detail</code> object containing <code>href: String</code> property that contains the URL.</li>
-<li>After: it dispatches <code>palindrom-after-redirect</code> event with <code>detail</code> object containing <code>href: String</code> property that contains the URL and <code>data: Object</code> containing the JSON response.</li>
+<li>call <code>palindrom.morphUrl(url)</code> - this will call <code>history.pushState</code> and update PalindromDOM's state for you,</li>
+<li>call <code>palindrom.getPatchUsingHTTP(url)</code> after your <code>history.pushState(url)</code>. This method returns a <a href="https://github.com/axios/axios#response-schema"><code>Promise&lt;Response&gt;</code></a>. This methods throws an error if the HTTP request has failed or the <code>palindrom-before-redirect</code> was canceled by calling <code>event.preventDefault()</code>.</li>
 </ul>
-<h4 id="morph-url-with-an-event">Morph URL with an event</h4>
-<p>Sometimes, it's tedious to locate the <code>PalindromDOM</code> instance in your application using <code>querySelector</code>, making it bothersome to call <code>palindrom.morphUrl</code>. In this case, you can dispatch an event to <code>palindrom.listenTo</code> element if you set one, or to <code>window</code> if you haven't, and <code>PaldinromDOM</code> with handle it and morph the URL.</p>
-<p>Example:</p>
-<pre><code class="js">document.dispatchEvent(new CustomEvent('palindrom-morph-url', {detail: {url: yourURL}}))
-</code></pre>
-
-<p>Or you can create a helper function:</p>
-<pre><code class="js">function morph(url) {
-  window.dispatchEvent(new CustomEvent('palindrom-morph-url', {detail: {url}}))
-}
-
-// then
-morph(yourURL);
-</code></pre>
               
             </div>
           </div>
