@@ -13,7 +13,7 @@
   "dependencies": {
     "core-js": "^2.6.5",
     "fetch-mock": "^7.3.6",
-    "palindrom": "github:palindrom/palindrom#master",
+    "palindrom": "^6.2.0",
     "vue": "^2.6.10"
   },
   "devDependencies": {
