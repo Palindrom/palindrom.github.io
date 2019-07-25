@@ -1,4 +1,4 @@
-// palindrom-bunny v3.0.0 | MIT License
+// palindrom-bunny v4.0.0 | MIT License
 const jumps = 10;
 
 const stageAnimation = Array(jumps).fill(true).map((_, i) => {
@@ -63,14 +63,14 @@ tmpl.innerHTML = /*html*/`
             </div>
         </div>
     </div>`;
-    
+
     let usedShadyCss  = false;
-    
+
     if (window.ShadyCSS) {
         usedShadyCss = true;
         ShadyCSS.prepareTemplate(tmpl, 'palindrom-bunny');
     }
-        
+
     class PalindromBunnyElement extends HTMLElement {
         constructor(self) {
             self = super(self);

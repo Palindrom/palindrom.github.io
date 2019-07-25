@@ -66,7 +66,7 @@
 </template>
 
 <script>
-import "../palindrom-bunny.js";
+import "palindrom-bunny";
 
 export default {
   name: "HelloWorld",

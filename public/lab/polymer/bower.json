@@ -17,6 +17,6 @@
   "dependencies": {
     "palindrom-client": "Palindrom/palindrom-client#^8.0.0",
     "polymer": "Polymer/polymer#^2.0.0",
-    "palindrom-bunny": "Palindrom/palindrom-bunny#^3.0.0"
+    "palindrom-bunny": "Palindrom/palindrom-bunny#^4.0.0"
   }
 }
