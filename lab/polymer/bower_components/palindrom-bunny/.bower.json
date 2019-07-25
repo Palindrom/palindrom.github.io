@@ -1,11 +1,10 @@
 {
   "name": "palindrom-bunny",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "Polymer Element that shows a jumping puppet bunny",
   "license": "MIT",
   "main": "palindrom-bunny.html",
   "keywords": [
-    "polymer",
     "web-components",
     "animation",
     "bunny",
@@ -14,22 +13,18 @@
   "ignore": [
     "**/.*",
     "node_modules",
-    "bower_components",
     "preview.png",
     "index.html"
   ],
-  "dependencies": {
-    "polymer": "Polymer/polymer#^2.0.0"
-  },
+  "dependencies": {},
   "homepage": "https://github.com/Palindrom/palindrom-bunny",
-  "_release": "3.0.0",
+  "_release": "4.0.0",
   "_resolution": {
     "type": "version",
-    "tag": "3.0.0",
-    "commit": "dffc05cdcb12751bf487b3286f252c2251b64f84"
+    "tag": "4.0.0",
+    "commit": "7845717e3c1861864ec0e7e09f68931762159a4e"
   },
   "_source": "https://github.com/Palindrom/palindrom-bunny.git",
-  "_target": "^3.0.0",
-  "_originalSource": "Palindrom/palindrom-bunny",
-  "_direct": true
+  "_target": "^4.0.0",
+  "_originalSource": "Palindrom/palindrom-bunny"
 }
