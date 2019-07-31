@@ -12,21 +12,47 @@ import "./mock-server.js";
 import { PalindromDOM } from "palindrom";
 import HelloWorld from "./components/HelloWorld.vue";
 
-function connectToPalindrom(onConnect) { // this is a generic Palindrom client config. See https://palindrom.github.io/docs/04-_PalindromDOM/
-  new PalindromDOM({
+let palindrom;
+
+function connectToPalindrom(onPalindromChange) {
+  // this is a generic Palindrom client config. See https://palindrom.github.io/docs/04-_PalindromDOM/
+  palindrom = new PalindromDOM({
     // "remoteUrl" is the location of the Palindrom server. By convention, the server should respond with a Palindrom
     // session JSON object when request has a header "Accept: application/json". If the Palindrom server is located in
     // another location, provide the URL here. Make sure that this URL is always the same, however every request to
     // it creates a new Palindrom session, which individual URL is given in the "X-Location" header of the response
     // to "remoteUrl"
     remoteUrl: window.location.href,
-    onStateReset: onConnect,
+    onStateReset: onPalindromChange,
+    onLocalChange: onPalindromChange,
+    onRemoteChange: onPalindromChange,
     debug: false,
     localVersionPath: "/_ver#c$",
     remoteVersionPath: "/_ver#s",
     ot: true,
     useWebSocket: false // with not simulated server, change this to true
   });
+  window.palindrom = palindrom;
+
+  let nextCallback = null;
+
+  function performCheck () {
+    if (palindrom.collect === undefined) {
+      throw new Error("You need Palindrom 'immer' branch");
+    }
+    palindrom.collect();
+    onPalindromChange();
+  }
+  function scheduleCheck () {
+    clearTimeout(nextCallback);
+    nextCallback = setTimeout(performCheck);
+  }
+
+  window.addEventListener("mouseup", scheduleCheck);
+  window.addEventListener("keyup", scheduleCheck);
+  window.addEventListener("mousedown", scheduleCheck);
+  window.addEventListener("keydown", scheduleCheck);
+  window.addEventListener("change", scheduleCheck);
 }
 
 export default {
@@ -35,19 +61,28 @@ export default {
     HelloWorld
   },
   methods: {
-    onConnect(obj) {
-      // use Palindrom's data object in the "App" component's data
-      this.palindromObj = obj;
+    onPalindromChange() {
+      this.invalidateComputed++;
     }
   },
   created() {
     // when an instance of the "App" component is created, request Palindrom connection and provide a callback
-    connectToPalindrom(this.onConnect);
+    connectToPalindrom(this.onPalindromChange);
   },
   data: function() {
     return {
-      palindromObj: null
+      invalidateComputed: 0 // a getter will only refresh if the value of a data property has changed
     };
+  },
+  computed: {
+    palindromObj: {
+      get() {
+        if (this.invalidateComputed) {
+          return palindrom.obj;
+        }
+        return null;
+      }
+    }
   }
-}
+};
 </script>
