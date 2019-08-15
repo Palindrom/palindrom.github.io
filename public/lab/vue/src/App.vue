@@ -1,6 +1,9 @@
 <template>
-  <HelloWorld v-model="obj" />
-  <!-- v-model directive has special meaning in Vue. It creates 2-way data binding. See: https://vuejs.org/v2/guide/components.html#Using-v-model-on-Components -->
+  <!--
+  v-model: this directive has special meaning in Vue. It creates 2-way data binding. See: https://vuejs.org/v2/guide/components.html#Using-v-model-on-Components
+  v-if: wait until value is populated with Palindrom state from the server
+  -->
+  <HelloWorld v-model="obj" v-if="obj" />
 </template>
 
 <script>
