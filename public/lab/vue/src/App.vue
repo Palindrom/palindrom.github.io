@@ -8,9 +8,9 @@
 
 <script>
 // the below line is only needed to simulate the server
-import './mock-server.js'
-import { PalindromDOM } from 'palindrom'
-import HelloWorld from './components/HelloWorld.vue'
+import "./mock-server.js";
+import { PalindromDOM } from "palindrom";
+import HelloWorld from "./components/HelloWorld.vue";
 
 function connectToPalindrom(onConnect) { // this is a generic Palindrom client config. See https://palindrom.github.io/docs/04-_PalindromDOM/
   new PalindromDOM({
@@ -30,7 +30,7 @@ function connectToPalindrom(onConnect) { // this is a generic Palindrom client c
 }
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
     HelloWorld
   },
