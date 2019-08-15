@@ -3,7 +3,7 @@
   v-model: this directive has special meaning in Vue. It creates 2-way data binding. See: https://vuejs.org/v2/guide/components.html#Using-v-model-on-Components
   v-if: wait until value is populated with Palindrom state from the server
   -->
-  <HelloWorld v-model="obj" v-if="obj" />
+  <HelloWorld v-model="palindromObj" v-if="palindromObj" />
 </template>
 
 <script>
@@ -37,7 +37,7 @@ export default {
   methods: {
     onConnect(obj) {
       // use Palindrom's data object in the "App" component's data
-      this.obj = obj;
+      this.palindromObj = obj;
     }
   },
   created() {
@@ -46,7 +46,7 @@ export default {
   },
   data: function() {
     return {
-      obj: null
+      palindromObj: null
     };
   }
 }
