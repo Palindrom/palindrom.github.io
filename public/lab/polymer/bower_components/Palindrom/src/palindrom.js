@@ -4,19 +4,18 @@
  * MIT license
  */
 
-import PalindromNetworkChannel from './palindrom-network-channel';
-import { applyPatch, validate } from 'fast-json-patch';
-import JSONPatcherProxy from 'jsonpatcherproxy';
-import { JSONPatchQueueSynchronous, JSONPatchQueue } from 'json-patch-queue';
-import JSONPatchOT from 'json-patch-ot';
-import JSONPatchOTAgent from 'json-patch-ot-agent';
-import { PalindromError, PalindromConnectionError } from './palindrom-errors';
-import Reconnector from './reconnector';
-import { Heartbeat, NoHeartbeat } from './heartbeat';
-import NoQueue from './noqueue';
+import PalindromNetworkChannel from './palindrom-network-channel.js';
+import { applyPatch, validate } from 'fast-json-patch/index.mjs';
+import { JSONPatcherProxy } from 'jsonpatcherproxy';
+import { JSONPatchQueue } from 'json-patch-queue';
+import { JSONPatchOT } from 'json-patch-ot';
+import { JSONPatchOTAgent } from 'json-patch-ot-agent';
+import { PalindromError, PalindromConnectionError } from './palindrom-errors.js';
+import Reconnector from './reconnector.js';
+import NoQueue from './noqueue.js';
 
 /* this variable is bumped automatically when you call npm version */
-const palindromVersion = '6.1.0';
+const palindromVersion = '6.4.0-0';
 
 if (typeof global === 'undefined') {
     if (typeof window !== 'undefined') {
@@ -31,7 +30,7 @@ if (typeof global === 'undefined') {
  * Defines a connection to a remote PATCH server, serves an object that is persistent between browser and server.
  * @param {Object} [options] map of arguments. See README.md for description
  */
-export default class Palindrom {
+class Palindrom {
     /**
      * Palindrom version
      */
@@ -91,63 +90,40 @@ export default class Palindrom {
             this.onReconnectionEnd
         );
 
-        if (options.pingIntervalS) {
-            const intervalMs = options.pingIntervalS * 1000;
-            this.heartbeat = new Heartbeat(
-                this.ping.bind(this),
-                this.handleConnectionError.bind(this),
-                intervalMs,
-                intervalMs
-            );
-        } else {
-            this.heartbeat = new NoHeartbeat();
-        }
-
         this.network = new PalindromNetworkChannel(
             this, // palindrom instance TODO: to be removed, used for error reporting
             options.remoteUrl,
             options.useWebSocket || false, // useWebSocket
             this.handleRemoteChange.bind(this), //onReceive
             this.onPatchSent.bind(this), //onSend,
-            this.handleConnectionError.bind(this),
+            this.onConnectionError.bind(this),
             this.onSocketOpened.bind(this),
-            this.handleFatalError.bind(this), //onFatalError,
-            this.onSocketStateChanged.bind(this) //onStateChange
+            this.onSocketStateChanged.bind(this), //onStateChange
+            options.pingIntervalS
         );
         /**
-         * how many OT operations are there in each patch 0, 1 or 2
+         * how many meta (OT) operations are there in each patch 0 or 2
          */
         this.OTPatchIndexOffset = 0;
         // choose queuing engine
-        if (options.localVersionPath) {
-            if (!options.remoteVersionPath) {
-                this.OTPatchIndexOffset = 1;
-                // just versioning
-                this.queue = new JSONPatchQueueSynchronous(
+        if (options.localVersionPath && options.remoteVersionPath) {
+            // double versioning or OT
+            this.OTPatchIndexOffset = 2;
+            if (options.ot) {
+                this.queue = new JSONPatchOTAgent(
                     this.obj,
-                    options.localVersionPath,
+                    JSONPatchOT.transform,
+                    [options.localVersionPath, options.remoteVersionPath],
                     this.validateAndApplySequence.bind(this),
                     options.purity
                 );
             } else {
-                this.OTPatchIndexOffset = 2;
-                // double versioning or OT
-                if (options.ot) {
-                    this.queue = new JSONPatchOTAgent(
-                        this.obj,
-                        JSONPatchOT.transform,
-                        [options.localVersionPath, options.remoteVersionPath],
-                        this.validateAndApplySequence.bind(this),
-                        options.purity
-                    );
-                } else {
-                    this.queue = new JSONPatchQueue(
-                        this.obj,
-                        [options.localVersionPath, options.remoteVersionPath],
-                        this.validateAndApplySequence.bind(this),
-                        options.purity
-                    ); // full or noop OT
-                }
+                this.queue = new JSONPatchQueue(
+                    this.obj,
+                    [options.localVersionPath, options.remoteVersionPath],
+                    this.validateAndApplySequence.bind(this),
+                    options.purity
+                ); // full or noop OT
             }
         } else {
             // no queue - just api
@@ -159,7 +135,6 @@ export default class Palindrom {
         this._connectToRemote();
     }
     async _connectToRemote(reconnectionPendingData = null) {
-        this.heartbeat.stop();
         const json = await this.network._establish(reconnectionPendingData);
         this.reconnector.stopReconnecting();
 
@@ -168,7 +143,6 @@ export default class Palindrom {
         }
 
         this.queue.reset(json);
-        this.heartbeat.start();
     }
     get useWebSocket() {
         return this.network.useWebSocket;
@@ -177,13 +151,8 @@ export default class Palindrom {
         this.network.useWebSocket = newValue;
     }
 
-    ping() {
-        this._sendPatch([]); // sends empty message to server
-    }
-
     _sendPatch(patch) {
         this.unobserve();
-        this.heartbeat.notifySend();
         this.network.send(patch);
         this.observe();
     }
@@ -227,14 +196,6 @@ export default class Palindrom {
     }
 
     handleLocalChange(operation) {
-        // it's a single operation, we need to check only it's value
-        operation.value &&
-            findRangeErrors(
-                operation.value,
-                this.onOutgoingPatchValidationError,
-                operation.path
-            );
-
         const patch = [operation];
         if (this.debug) {
             this.validateSequence(this.remoteObj, patch);
@@ -295,25 +256,6 @@ export default class Palindrom {
         }
     }
 
-    /**
-     * Handle an error which is probably caused by random disconnection
-     */
-    handleConnectionError() {
-        this.heartbeat.stop();
-        this.reconnector.triggerReconnection();
-        this.onConnectionError(); //TODO missing `PalindromError` according to docs
-    }
-
-    /**
-     * Handle an error which probably won't go away on itself (basically forward upstream)
-     * @param {PalindromConnectionError} palindromError
-     */
-    handleFatalError(palindromError) {
-        this.heartbeat.stop();
-        this.reconnector.stopReconnecting();
-        this.onConnectionError(palindromError);
-    }
-
     reconnectNow() {
         this.reconnector.reconnectNow();
     }
@@ -330,7 +272,6 @@ export default class Palindrom {
         //console.assert(data instanceof Array, "expecting parsed JSON-Patch");
         this.onPatchReceived(data, url, method);
 
-        this.heartbeat.notifyReceive();
         const patch = data || []; // fault tolerance - empty response string should be treated as empty patch array
 
         validateNumericsRangesInPatch(
@@ -362,6 +303,14 @@ export default class Palindrom {
         if (this.debug) {
             this.remoteObj = JSON.parse(JSON.stringify(this.obj));
         }
+    }
+    /**
+     * Stops all networking, stops listeners, heartbeats, etc.
+     */
+    stop() {
+        this.unobserve();
+        this.reconnector.stopReconnecting();
+        this.network.stop();
     }
 }
 
@@ -405,3 +354,4 @@ function findRangeErrors(val, errorHandler, variablePath = '') {
         );
     }
 }
+export {Palindrom};
