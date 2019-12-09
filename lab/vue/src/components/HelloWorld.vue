@@ -1,5 +1,5 @@
 <template>
-  <div v-if="value"><!-- wait until value is populated with Palindrom state from the server -->
+  <div>
     <div id="brand">
       <div class="float">
         <img alt="Palindrom + Vue" title="Palindrom and Vue logos" src="../assets/logo.png" />

@@ -42,7 +42,7 @@ function setPerson(firstName, lastName) {
 fetchMock.mock('*', (url, req) => {
     /*
     This mock server deliberately uses hand-written patch operations to show the expected patches coming into and out from the server.
-    Normally, you would use a library like JSON-Patch to consume the incoming patches and generate the outgoing patches on the server. 
+    Normally, you would use a library like JSON-Patch to consume the incoming patches and generate the outgoing patches on the server.
     Palindrom library has an option to run as a server in NodeJS, providing you with such functionality. However, it is not presented in this demo.
     */
     if (req.headers.Accept === 'application/json-patch+json') {
@@ -72,7 +72,6 @@ fetchMock.mock('*', (url, req) => {
                         patch.push(...generateReplaceOperation(obj.user, '/user/resetNameClicked$', '/user/firstName$', '/user/lastName$', '/user/fullName'));
                     }
                     else {
-                        console.error("Unexpected patch", operation);
                         throw new Error("Unexpected patch");
                     }
                 };

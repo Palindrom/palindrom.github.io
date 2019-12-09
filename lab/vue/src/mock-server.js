@@ -74,7 +74,6 @@ fetchMock.mock('*', (url, req) => {
                         patch.push(...generateReplaceOperation(obj.user, '/user/resetNameClicked$', '/user/firstName$', '/user/lastName$', '/user/fullName'));
                     }
                     else {
-                        console.error("Unexpected patch", operation);
                         throw new Error("Unexpected patch");
                     }
                 }

@@ -157,12 +157,11 @@ var smallestInt = -9007199254740991
 </blockquote>
 <p>It is not a limitation of JSON, but of JavaScript, that all numbers are stored in memory as float64 (equivalent to <code>Double</code> in C#). This means that numbers larger than +/- <strong>9007199254740991</strong> cannot be used in JavaScript without losing precision. </p>
 <h4 id="numbers-validation">Numbers validation</h4>
-<p>To ensure the validity of your data all the time, Palindrom validates each number it comes across and throws an error when it encounters an out-of-range value, from both endpoints:</p>
-<ul>
-<li><strong>From Server's endpoint</strong>: It calls <code>onIncomingPatchValidationError</code> with a <code>RangeError</code> with an elaborate message.</li>
-<li><strong>From Client's endpoint</strong>: It calls <code>onOutgoingPatchValidationError</code> with a <code>RangeError</code> with an elaborate message.</li>
-</ul>
-<p>For more information about these callbacks, please refer to Section 2.</p>
+<p>To ensure the validity of your data, Palindrom validates each number it receives from the remote and throws an error when it encounters an out-of-range value. It calls <code>onIncomingPatchValidationError</code> with a <code>RangeError</code> with an elaborate message.</p>
+<p>For more information about this callback, please refer to Section 2.</p>
+<blockquote>
+<p>Please note, that Palindrom operates in JavaScript environment, that means Numbers above <code>MAX_SAFE_INTEGER</code> are also not safe for local Palindrom. <code>JSONPatcherProxy</code> used by Palindrom to observe changes in your local object may not observe the changes that happen above <code>MAX_SAFE_INTEGER</code>, see <a href="https://github.com/Palindrom/JSONPatcherProxy#limitations">limitations section in JSONPatcherProxy README</a>. This means, no error will be thrown and no patch will be issued when you change, for example <code>Number.MAX_SAFE_INTEGER + 1</code> to <code>Number.MAX_SAFE_INTEGER + 2</code>.</p>
+</blockquote>
               
             </div>
           </div>

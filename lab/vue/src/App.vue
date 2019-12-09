@@ -1,13 +1,16 @@
 <template>
-  <HelloWorld v-model="obj" />
-  <!-- v-model directive has special meaning in Vue. It creates 2-way data binding. See: https://vuejs.org/v2/guide/components.html#Using-v-model-on-Components -->
+  <!--
+  v-model: this directive has special meaning in Vue. It creates 2-way data binding. See: https://vuejs.org/v2/guide/components.html#Using-v-model-on-Components
+  v-if: wait until value is populated with Palindrom state from the server
+  -->
+  <HelloWorld v-model="palindromObj" v-if="palindromObj" />
 </template>
 
 <script>
 // the below line is only needed to simulate the server
-import './mock-server.js'
-import { PalindromDOM } from 'palindrom'
-import HelloWorld from './components/HelloWorld.vue'
+import "./mock-server.js";
+import { PalindromDOM } from "palindrom";
+import HelloWorld from "./components/HelloWorld.vue";
 
 function connectToPalindrom(onConnect) { // this is a generic Palindrom client config. See https://palindrom.github.io/docs/04-_PalindromDOM/
   new PalindromDOM({
@@ -27,14 +30,14 @@ function connectToPalindrom(onConnect) { // this is a generic Palindrom client c
 }
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
     HelloWorld
   },
   methods: {
     onConnect(obj) {
       // use Palindrom's data object in the "App" component's data
-      this.obj = obj;
+      this.palindromObj = obj;
     }
   },
   created() {
@@ -43,7 +46,7 @@ export default {
   },
   data: function() {
     return {
-      obj: null
+      palindromObj: null
     };
   }
 }
