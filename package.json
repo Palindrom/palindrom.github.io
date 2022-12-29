@@ -19,7 +19,7 @@
   "homepage": "https://palindrom.github.io/",
   "devDependencies": {
     "gh-pages": "^2.0.1",
-    "react-scripts": "^3.0.1"
+    "react-scripts": "^5.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
